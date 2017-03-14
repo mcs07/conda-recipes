@@ -49,6 +49,7 @@ install:
   - cmd: set PYTHONUNBUFFERED=1
   - cmd: set CPU_COUNT=2
   - cmd: conda update --yes --quiet --all
+  - cmd: conda install --yes --quiet -c conda-forge obvious-ci
   - cmd: conda install --yes --quiet -c conda-forge conda-build-all
   - cmd: conda info
   - cmd: conda config --get
