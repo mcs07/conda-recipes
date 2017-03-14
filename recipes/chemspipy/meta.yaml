@@ -1,0 +1,41 @@
+{% set name = "ChemSpiPy" %}
+{% set version = "1.0.4" %}
+{% set sha256 = "8259b819d13d32fc35d4e9d74220e7c9e524f766a8c3d31f71447aad19acbd87" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  fn: {{ name }}-{{ version }}.tar.gz
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: {{ sha256 }}
+
+build:
+  number: 1
+  script: python setup.py install --single-version-externally-managed --record=record.txt
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - lxml
+    - requests
+    - six
+  run:
+    - python
+    - lxml
+    - requests
+    - six
+
+test:
+  imports:
+    - chemspipy
+
+about:
+  home: https://github.com/mcs07/ChemSpiPy
+  license: MIT
+  license_file: LICENSE
+  summary: 'Python wrapper for the ChemSpider API'
+  doc_url: http://chemspipy.readthedocs.io
+  dev_url: https://github.com/mcs07/ChemSpiPy
