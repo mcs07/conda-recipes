@@ -1,0 +1,55 @@
+{% set name = "leptonica" %}
+{% set version = "1.74.1" %}
+{% set sha256 = "746a517a47a3bd2a90bc8d581ca6464c10f30e91a60209735efe45b3778bec62" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  fn: {{ name }}-{{ version }}.tar.gz
+  url: http://www.leptonica.org/source/{{ name }}-{{ version }}.tar.gz
+  sha256: {{ sha256 }}
+
+build:
+  number: 0
+  skip: True  # [py35]
+  features:
+    - vc9  # [win and py27]
+    - vc10  # [win and py34]
+    - vc14  # [win and py>=35]
+
+requirements:
+  build:
+    - gcc  # [linux]
+    - llvm  # [osx]
+    - automake
+    - libtool
+    - pkg-config
+    - jpeg
+    - libpng
+    - libtiff
+    - openjpeg
+    - zlib
+    - vc 9  # [win and py27]
+    - vc 10  # [win and py34]
+    - vc 14  # [win and py>=35]
+  run:
+    - libgcc  # [linux]
+    - jpeg
+    - libpng
+    - libtiff
+    - openjpeg
+    - zlib
+    - vc 9  # [win and py27]
+    - vc 10  # [win and py34]
+    - vc 14  # [win and py>=35]
+
+test:
+  commands:
+    - convertfilestopdf --help 2>&1 | grep 'resolution' &> /dev/null
+
+about:
+  home: https://github.com/DanBloomberg/leptonica
+  license: FreeBSD 2-clause license
+  summary: Leptonica image processing library
