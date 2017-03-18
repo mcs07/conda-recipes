@@ -1,4 +1,4 @@
-echo "include_directories($ENV{LIBRARY_INC})" >> CMakeLists.txt
+echo include_directories($ENV{LIBRARY_INC}) >> CMakeLists.txt
 
 mkdir build
 cd build
