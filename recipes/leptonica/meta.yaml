@@ -8,7 +8,7 @@ package:
 
 source:
   fn: {{ version }}.tar.gz
-  url: https://github.com/DanBloomberg/leptonica/{{ name }}/{{ version }}.tar.gz
+  url: https://github.com/DanBloomberg/leptonica/archive/{{ name }}/{{ version }}.tar.gz
   sha256: {{ sha256 }}
 
 build:
