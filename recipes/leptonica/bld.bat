@@ -1,6 +1,7 @@
 mkdir build
 cd build
-CFLAGS="-I%LIBRARY_INC%" cmake -G "%CMAKE_GENERATOR%" ^
+set CFLAGS="-I%LIBRARY_INC%"
+cmake -G "%CMAKE_GENERATOR%" ^
       -D BUILD_PROG=1 ^
       -D CMAKE_PREFIX_PATH=%LIBRARY_PREFIX% ^
       -D CMAKE_INCLUDE_PATH=%LIBRARY_INC% ^

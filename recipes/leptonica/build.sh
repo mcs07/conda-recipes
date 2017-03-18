@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
+export LDFLAGS="-Wl,-rpath -Wl,$PREFIX/lib"
+export CFLAGS="-I$PREFIX/include"
 ./autobuild
-LDFLAGS="-Wl,-rpath -Wl,$PREFIX/lib" CFLAGS="-I$PREFIX/include" sh ./configure --prefix=$PREFIX
+./configure --prefix=$PREFIX
 make
 make install
