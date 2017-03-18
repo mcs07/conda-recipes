@@ -1,14 +1,14 @@
 {% set name = "leptonica" %}
 {% set version = "1.74.1" %}
-{% set sha256 = "6d40c7318b2b60fec5173475e8a34c1e08799d668a533d1756c9dfeb874a9d8a" %}
+{% set sha256 = "746a517a47a3bd2a90bc8d581ca6464c10f30e91a60209735efe45b3778bec62" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  fn: {{ version }}.tar.gz
-  url: https://github.com/DanBloomberg/{{ name }}/archive/{{ version }}.tar.gz
+  fn: {{ name }}-{{ version }}.tar.gz
+  url: http://www.leptonica.org/source/{{ name }}-{{ version }}.tar.gz
   sha256: {{ sha256 }}
 
 build:
