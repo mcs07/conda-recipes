@@ -13,6 +13,6 @@ cmake -G "%CMAKE_GENERATOR%" ^
       -D ZLIB_INCLUDE_DIR=%LIBRARY_INC% ^
       ..
 if errorlevel 1 exit 1
-
+set INCLUDE=%LIBRARY_INC%
 cmake --build  . --config Release
 if errorlevel 1 exit 1
