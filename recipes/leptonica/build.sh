@@ -1,6 +1,4 @@
 #!/usr/bin/env bash
-export LDFLAGS="-Wl,-rpath -Wl,$PREFIX/lib"
-export CFLAGS="-I$PREFIX/include"
-./configure --prefix=$PREFIX  --with-libpng --with-jpeg --with-libopenjpeg --with-libtiff
+./configure CFLAGS="-I$PREFIX/include" LDFLAGS="-Wl,-rpath -Wl,$PREFIX/lib" --prefix=$PREFIX  --with-libpng --with-jpeg --with-libopenjpeg --with-libtiff
 make
 make install
