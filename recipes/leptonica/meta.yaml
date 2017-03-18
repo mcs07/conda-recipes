@@ -23,9 +23,10 @@ requirements:
   build:
     - gcc  # [linux]
     - llvm  # [osx]
-    - automake
-    - libtool
-    - pkg-config
+    - automake  # [not win]
+    - libtool  # [not win]
+    - pkg-config  # [not win]
+    - cmake  # [win]
     - jpeg
     - libpng
     - libtiff
