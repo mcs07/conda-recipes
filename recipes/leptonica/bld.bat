@@ -1,6 +1,8 @@
+echo "include_directories($ENV{LIBRARY_INC})" >> CMakeLists.txt
+
 mkdir build
 cd build
-set CFLAGS="-I%LIBRARY_INC%"
+
 cmake -G "%CMAKE_GENERATOR%" ^
       -D BUILD_PROG=1 ^
       -D CMAKE_PREFIX_PATH=%LIBRARY_PREFIX% ^
