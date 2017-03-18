@@ -1,6 +1,6 @@
 mkdir build
 cd build
-cmake -G "%CMAKE_GENERATOR%" ^
+CFLAGS="-I%LIBRARY_INC%" cmake -G "%CMAKE_GENERATOR%" ^
       -D BUILD_PROG=1 ^
       -D CMAKE_PREFIX_PATH=%LIBRARY_PREFIX% ^
       -D CMAKE_INCLUDE_PATH=%LIBRARY_INC% ^
@@ -16,6 +16,6 @@ cmake -G "%CMAKE_GENERATOR%" ^
       -D ZLIB_INCLUDE_DIR=%LIBRARY_INC% ^
       ..
 if errorlevel 1 exit 1
-set INCLUDE=%LIBRARY_INC%
+
 cmake --build  . --config Release
 if errorlevel 1 exit 1
