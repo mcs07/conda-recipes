@@ -1,4 +1,4 @@
-echo include_directories($ENV{LIBRARY_INC}) >> CMakeLists.txt
+echo include_directories($ENV{LIBRARY_INC}) >> src\CMakeLists.txt
 
 mkdir build
 cd build
@@ -20,5 +20,5 @@ cmake -G "%CMAKE_GENERATOR%" ^
       ..
 if errorlevel 1 exit 1
 
-cmake --build  . --config Release
+cmake --build . --config Release
 if errorlevel 1 exit 1
