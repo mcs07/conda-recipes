@@ -10,6 +10,8 @@ source:
   fn: {{ name }}-{{ version }}.tar.gz
   url: http://www.leptonica.org/source/{{ name }}-{{ version }}.tar.gz
   sha256: {{ sha256 }}
+    patches:
+      - cmake.patch  # [win]
 
 build:
   number: 1
