@@ -12,6 +12,7 @@ source:
   sha256: {{ sha256 }}
   patches:
     - cmake.patch  # [win]
+    - optimize.patch  # [win and py27]
 
 build:
   number: 1
