@@ -10,7 +10,7 @@ cmake -G "%CMAKE_GENERATOR%" ^
       ..
 if errorlevel 1 exit 1
 
-cmake --build . --config Release
+cmake --build .
 if errorlevel 1 exit 1
 
 mkdir %LIBRARY_INC%\leptonica
