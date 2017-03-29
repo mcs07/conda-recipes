@@ -1,6 +1,6 @@
 {% set name = "ChemSpiPy" %}
-{% set version = "1.0.4" %}
-{% set sha256 = "8259b819d13d32fc35d4e9d74220e7c9e524f766a8c3d31f71447aad19acbd87" %}
+{% set version = "1.0.5" %}
+{% set sha256 = "4dddcdf725245f1cf77ec040a6103648c98f46e11c24aded78ae1379c79bcf56" %}
 
 package:
   name: {{ name|lower }}
