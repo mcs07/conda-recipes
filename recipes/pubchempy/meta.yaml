@@ -1,6 +1,6 @@
 {% set name = "PubChemPy" %}
-{% set version = "1.0.3" %}
-{% set sha256 = "a621c6888c537555ff7effe51c3018d02f586e5677fde0437cf7fd4cda208630" %}
+{% set version = "1.0.4" %}
+{% set sha256 = "24e9dc2fc90ab153b2764bf805e510b1410700884faf0510a9e7cf0d61d8ed0e" %}
 
 package:
   name: {{ name|lower }}
