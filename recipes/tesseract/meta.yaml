@@ -16,7 +16,7 @@ build:
 
 requirements:
   build:
-    - gcc       # [linux]
+    - autoconf  # [not win]
     - automake  # [not win]
     - libtool  # [not win]
     - pkg-config  # [not win]
@@ -26,7 +26,6 @@ requirements:
     - zlib
     - leptonica
   run:
-    - libgcc    # [linux]
     - libpng
     - jpeg
     - libtiff
