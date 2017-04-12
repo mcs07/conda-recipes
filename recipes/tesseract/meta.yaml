@@ -17,6 +17,9 @@ build:
 requirements:
   build:
     - gcc       # [linux]
+    - automake  # [not win]
+    - libtool  # [not win]
+    - pkg-config  # [not win]
     - libpng
     - jpeg
     - libtiff
