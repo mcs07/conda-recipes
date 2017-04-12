@@ -17,6 +17,8 @@ then
     export LINKFLAGS="${LDFLAGS}"
 fi
 
+mkdir build
+cd build
 
 cmake -D CMAKE_PREFIX_PATH=%LIBRARY_PREFIX% ^
       -D CMAKE_INCLUDE_PATH=%LIBRARY_INC% ^
