@@ -17,7 +17,12 @@ then
     export LINKFLAGS="${LDFLAGS}"
 fi
 
-./autogen.sh
-LIBLEPT_HEADERSDIR=$PREFIX/include ./configure --prefix=$PREFIX --with-extra-libraries=$PREFIX/lib
-LDFLAGS="-L$PREFIX/lib" CFLAGS="-I$PREFIX/include" make
+
+cmake -D CMAKE_PREFIX_PATH=%LIBRARY_PREFIX% ^
+      -D CMAKE_INCLUDE_PATH=%LIBRARY_INC% ^
+      -D CMAKE_LIBRARY_PATH=%LIBRARY_LIB% ^
+      -D CMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% ^
+      ..
+
+make
 make install
