@@ -24,8 +24,6 @@ build:
 
 requirements:
   build:
-    - gcc  # [linux]
-    - llvm  # [osx]
     - automake  # [not win]
     - libtool  # [not win]
     - pkg-config  # [not win]
@@ -38,7 +36,6 @@ requirements:
     - vc 10  # [win and py34]
     - vc 14  # [win and py>=35]
   run:
-    - libgcc  # [linux]
     - jpeg
     - libpng
     - libtiff
