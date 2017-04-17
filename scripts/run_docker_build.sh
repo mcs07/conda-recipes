@@ -31,6 +31,7 @@ conda config --set show_channel_urls true
 conda config --set add_pip_as_python_dependency false
 conda update -n root --yes --quiet --all
 conda install -n root --yes --quiet -c conda-forge conda-build-all
+conda install -n root --yes --quiet -c conda-forge autoconf automake
 
 conda info
 conda config --get
