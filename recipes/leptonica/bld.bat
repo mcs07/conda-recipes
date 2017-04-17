@@ -15,6 +15,7 @@ if errorlevel 1 exit 1
 
 mkdir %LIBRARY_INC%\leptonica
 MOVE ..\src\*.h %LIBRARY_INC%\leptonica\
+MOVE src\*.h %LIBRARY_INC%\leptonica\
 MOVE bin\Release\*.exe %SCRIPTS%\
 MOVE bin\Release\*.dll %LIBRARY_BIN%\
 MOVE src\Release\*.lib %LIBRARY_LIB%\
