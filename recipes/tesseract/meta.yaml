@@ -13,6 +13,10 @@ source:
 
 build:
   number: 0
+  features:
+    - vc9  # [win and py27]
+    - vc10  # [win and py34]
+    - vc14  # [win and py>=35]
 
 requirements:
   build:
@@ -22,12 +26,18 @@ requirements:
     - libtiff
     - zlib
     - leptonica
+    - vc 9  # [win and py27]
+    - vc 10  # [win and py34]
+    - vc 14  # [win and py>=35]
   run:
     - libpng
     - jpeg
     - libtiff
     - zlib
     - leptonica
+    - vc 9  # [win and py27]
+    - vc 10  # [win and py34]
+    - vc 14  # [win and py>=35]
 
 test:
   commands:
