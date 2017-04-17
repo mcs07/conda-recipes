@@ -14,8 +14,11 @@ cmake --build . --config Release
 if errorlevel 1 exit 1
 
 mkdir %LIBRARY_INC%\leptonica
-MOVE ..\src\*.h %LIBRARY_INC%\leptonica
+MOVE ..\src\*.h %LIBRARY_INC%\leptonica\
 MOVE bin\Release\*.exe %SCRIPTS%\
 MOVE bin\Release\*.dll %LIBRARY_BIN%\
 MOVE src\Release\*.lib %LIBRARY_LIB%\
+mkdir %LIBRARY_LIB%\cmake\Leptonica
+MOVE LeptonicaConfig.cmake %LIBRARY_LIB%\cmake\Leptonica\
+MOVE LeptonicaConfig-version.cmake %LIBRARY_LIB%\cmake\Leptonica\
 if errorlevel 1 exit 1
