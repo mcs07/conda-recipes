@@ -16,5 +16,5 @@ make
 # change permissions again after building
 chmod -R o-w $SRC_DIR
 
-make test
+# make test
 make install
