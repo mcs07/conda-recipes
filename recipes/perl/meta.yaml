@@ -16,6 +16,7 @@ source:
   sha256: c599c88906bb1955fdc45a00dccd78b8c327ed6f7010185cb2e9bacf590574d2  # [win]
 
 build:
+  skip: True  # [not linux]
   number: 0
 
 test:
