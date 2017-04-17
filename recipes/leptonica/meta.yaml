@@ -15,7 +15,7 @@ source:
     - optimize.patch  # [win and py27]
 
 build:
-  number: 2
+  number: 3
   skip: True  # [win and py35]
   features:
     - vc9  # [win and py27]
