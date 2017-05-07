@@ -31,6 +31,7 @@ requirements:
     - libtiff
     - zlib
     - leptonica
+    - msinttypes  # [win and py27]
     - vc 9  # [win and py27]
     - vc 10  # [win and py34]
     - vc 14  # [win and py>=35]
@@ -40,6 +41,7 @@ requirements:
     - libtiff
     - zlib
     - leptonica
+    - msinttypes  # [win and py27]
     - vc 9  # [win and py27]
     - vc 10  # [win and py34]
     - vc 14  # [win and py>=35]
