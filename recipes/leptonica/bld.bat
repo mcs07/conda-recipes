@@ -22,5 +22,4 @@ MOVE src\Release\*.lib %LIBRARY_LIB%\
 mkdir %LIBRARY_LIB%\cmake\Leptonica
 MOVE LeptonicaConfig.cmake %LIBRARY_LIB%\cmake\Leptonica\
 MOVE LeptonicaConfig-version.cmake %LIBRARY_LIB%\cmake\Leptonica\
-MOVE LeptonicaTargets.cmake %LIBRARY_LIB%\cmake\Leptonica\
 if errorlevel 1 exit 1
