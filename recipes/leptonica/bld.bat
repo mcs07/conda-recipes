@@ -17,8 +17,8 @@ mkdir %LIBRARY_INC%\leptonica
 MOVE ..\src\*.h %LIBRARY_INC%\leptonica\
 MOVE src\*.h %LIBRARY_INC%\leptonica\
 MOVE bin\Release\*.exe %SCRIPTS%\
-MOVE bin\Release\*.dll %LIBRARY_BIN%\
-MOVE src\Release\*.lib %LIBRARY_LIB%\
+MOVE bin\Release\*.dll %LIBRARY_BIN%\leptonica.dll
+MOVE src\Release\*.lib %LIBRARY_LIB%\leptonica.lib
 mkdir %LIBRARY_LIB%\cmake\Leptonica
 MOVE LeptonicaConfig.cmake %LIBRARY_LIB%\cmake\Leptonica\
 MOVE LeptonicaConfig-version.cmake %LIBRARY_LIB%\cmake\Leptonica\
