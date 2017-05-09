@@ -30,7 +30,7 @@ export PYTHONUNBUFFERED=1
 conda config --set show_channel_urls true
 conda config --set add_pip_as_python_dependency false
 conda update -n root --yes --quiet --all
-conda install -n root --yes --quiet -c conda-forge conda-build-all
+conda install -n root --yes --quiet -c conda-forge anaconda-client==1.6.2 conda-build-all
 
 conda info
 conda config --get
