@@ -1,6 +1,6 @@
 {% set name = "leptonica" %}
-{% set version = "1.74.1" %}
-{% set sha256 = "746a517a47a3bd2a90bc8d581ca6464c10f30e91a60209735efe45b3778bec62" %}
+{% set version = "1.74.4" %}
+{% set sha256 = "29c35426a416bf454413c6fec24c24a0b633e26144a17e98351b6dffaa4a833b" %}
 
 package:
   name: {{ name|lower }}
@@ -8,14 +8,14 @@ package:
 
 source:
   fn: {{ name }}-{{ version }}.tar.gz
-  url: http://www.leptonica.org/source/{{ name }}-{{ version }}.tar.gz
+  url: https://github.com/DanBloomberg/{{ name }}/releases/download/{{ version }}/{{ name }}-{{ version }}.tar.gz
   sha256: {{ sha256 }}
   patches:
     - cmake.patch  # [win]
     - optimize.patch  # [win and py27]
 
 build:
-  number: 8
+  number: 0
   skip: True  # [win and py>35]
   features:
     - vc9  # [win and py27]
