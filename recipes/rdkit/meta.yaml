@@ -1,6 +1,6 @@
-{% set version = "2016.09.4" %}
+{% set version = "2017.03.2" %}
 {% set filename = "Release_%s.tar.gz" % version.replace(".", "_") %}
-{% set sha256 = "aa1d7ee6e9b58c9ad31996eb8ef43703d5497781dc3b4067ce6d38cec7cae172" %}
+{% set sha256 = "1c063ee2b8af56dede421aa875c6c0b96ad28724a158daa040fffccafc58daeb" %}
 
 package:
   name: rdkit
@@ -13,36 +13,32 @@ source:
   patches:
     - rdpaths.patch
     - rdconfig.patch  # [win]
-    - vs2015.patch  # [win and py>=35]
 
 build:
-  number: 2
+  number: 1
   features:
     - vc9  # [win and py27]
-    - vc10  # [win and py34]
     - vc14  # [win and py>=35]
 
 requirements:
   build:
     - cmake
-    - boost 1.63.*
+    - boost 1.64.*
     - python
     - numpy x.x
-    - freetype
+    - freetype 2.7|2.7.*
     - pillow
     - pandas
     - eigen
     - vc 9  # [win and py27]
-    - vc 10  # [win and py34]
     - vc 14  # [win and py>=35]
   run:
-    - boost 1.63.*
+    - boost 1.64.*
     - python
     - numpy x.x
     - pycairo  # [win]
     - cairocffi  # [unix]
     - vc 9  # [win and py27]
-    - vc 10  # [win and py34]
     - vc 14  # [win and py>=35]
 
 test:
@@ -52,3 +48,7 @@ test:
 about:
   home: http://rdkit.org
   license: BSD
+  license_file: license.txt
+  summary: 'A collection of cheminformatics and machine-learning software written in C++ and Python.'
+  doc_url: http://www.rdkit.org/docs/index.html
+  dev_url: https://github.com/rdkit/rdkit
