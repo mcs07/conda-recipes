@@ -12,7 +12,5 @@ if errorlevel 1 exit 1
 cmake --build . --config Release
 if errorlevel 1 exit 1
 
-MOVE bin\tesseract.exe %SCRIPTS%\
-MOVE *.dll %LIBRARY_BIN%\
-MOVE *.lib %LIBRARY_LIB%\
+cmake --build . --target install 
 if errorlevel 1 exit 1
