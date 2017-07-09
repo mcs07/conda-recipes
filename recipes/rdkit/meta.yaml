@@ -1,0 +1,54 @@
+{% set version = "2016.09.4" %}
+{% set filename = "Release_%s.tar.gz" % version.replace(".", "_") %}
+{% set sha256 = "aa1d7ee6e9b58c9ad31996eb8ef43703d5497781dc3b4067ce6d38cec7cae172" %}
+
+package:
+  name: rdkit
+  version: {{ version }}
+
+source:
+  fn:  {{ filename }}
+  url: https://github.com/rdkit/rdkit/archive/{{ filename }}
+  sha256: {{ sha256 }}
+  patches:
+    - rdpaths.patch
+    - rdconfig.patch  # [win]
+    - vs2015.patch  # [win and py>=35]
+
+build:
+  number: 2
+  features:
+    - vc9  # [win and py27]
+    - vc10  # [win and py34]
+    - vc14  # [win and py>=35]
+
+requirements:
+  build:
+    - cmake
+    - boost 1.63.*
+    - python
+    - numpy x.x
+    - freetype
+    - pillow
+    - pandas
+    - eigen
+    - vc 9  # [win and py27]
+    - vc 10  # [win and py34]
+    - vc 14  # [win and py>=35]
+  run:
+    - boost 1.63.*
+    - python
+    - numpy x.x
+    - pycairo  # [win]
+    - cairocffi  # [unix]
+    - vc 9  # [win and py27]
+    - vc 10  # [win and py34]
+    - vc 14  # [win and py>=35]
+
+test:
+  imports:
+    - rdkit
+
+about:
+  home: http://rdkit.org
+  license: BSD
