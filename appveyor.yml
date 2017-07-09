@@ -1,61 +1,52 @@
 environment:
-  CMD_IN_ENV: "cmd /E:ON /V:ON /C obvci_appveyor_python_build_env.cmd"
   BINSTAR_TOKEN:
     secure: HQqdcPmLjN0dtBOCoqCHfZkwxSQoTu7234aYJl6yffbWFTe6dOwDmXGzzVOja5/m
-
+  PYTHONIOENCODING: "UTF-8"
   matrix:
-    - TARGET_ARCH: x86
-      CONDA_PY: 27
-      CONDA_INSTALL_LOCN: C:\\Miniconda
+    - TARGET_ARCH: "x86"
+      CONDA_PY: "27"
       PY_CONDITION: "python >=2.7,<3"
-
-    - TARGET_ARCH: x64
-      CONDA_PY: 27
-      CONDA_INSTALL_LOCN: C:\\Miniconda-x64
+      CONDA_INSTALL_LOCN: "C:\\Miniconda"
+    - TARGET_ARCH: "x86"
+      CONDA_PY: "35"
+      PY_CONDITION: "python >=3.5,<3.6"
+      CONDA_INSTALL_LOCN: "C:\\Miniconda35"
+    - TARGET_ARCH: "x86"
+      CONDA_PY: "36"
+      PY_CONDITION: "python >=3.6"
+      CONDA_INSTALL_LOCN: "C:\\Miniconda36"
+    - TARGET_ARCH: "x64"
+      CONDA_PY: "27"
       PY_CONDITION: "python >=2.7,<3"
-
-    - TARGET_ARCH: x86
-      CONDA_PY: 35
-      CONDA_INSTALL_LOCN: C:\\Miniconda35
+      CONDA_INSTALL_LOCN: "C:\\Miniconda-x64"
+    - TARGET_ARCH: "x64"
+      CONDA_PY: "35"
       PY_CONDITION: "python >=3.5,<3.6"
-
-    - TARGET_ARCH: x64
-      CONDA_PY: 35
-      CONDA_INSTALL_LOCN: C:\\Miniconda35-x64
-      PY_CONDITION: "python >=3.5,<3.6"
-
-    - TARGET_ARCH: x86
-      CONDA_PY: 36
-      CONDA_INSTALL_LOCN: C:\\Miniconda35
-      PY_CONDITION: "python >=3.6,<3.7"
-
-    - TARGET_ARCH: x64
-      CONDA_PY: 36
-      CONDA_INSTALL_LOCN: C:\\Miniconda35-x64
-      PY_CONDITION: "python >=3.6,<3.7"
+      CONDA_INSTALL_LOCN: "C:\\Miniconda35-x64"
+    - TARGET_ARCH: "x64"
+      CONDA_PY: "36"
+      PY_CONDITION: "python >=3.6"
+      CONDA_INSTALL_LOCN: "C:\\Miniconda36-x64"
 
 platform:
   - x64
 
 install:
+  - cmd: set CONDA_NPY=19
   - cmd: rmdir C:\cygwin /s /q
   - cmd: call %CONDA_INSTALL_LOCN%\Scripts\activate.bat
-  - cmd: conda config --remove channels defaults
-  - cmd: conda config --add channels defaults
+  - cmd: conda config --add channels conda-forge
   - cmd: conda config --add channels mcs07
   - cmd: conda config --set show_channel_urls true
   - cmd: conda config --set add_pip_as_python_dependency false
-  - cmd: conda update --yes --quiet --all
-  - cmd: set PYTHONUNBUFFERED=1
-  - cmd: set CPU_COUNT=2
-  - cmd: conda update --yes --quiet --all
-  - cmd: conda install --yes --quiet -c conda-forge obvious-ci vs2008_express_vc_python_patch
-  - cmd: conda install --yes --quiet -c conda-forge anaconda-client==1.6.2 conda-build-all
-  - cmd: call setup_x64
+  - cmd: conda update --yes --quiet conda
+  - cmd: conda install --yes --quiet conda-build-all
+  - cmd: conda install --yes --quiet conda-forge-build-setup
+  - cmd: run_conda_forge_build_setup
   - cmd: conda info
   - cmd: conda config --get
 
 build: off
 
 test_script:
-  - '%CMD_IN_ENV% conda-build-all recipes --inspect-channels mcs07 --upload-channels mcs07 --matrix-conditions "numpy >=1.10" "%PY_CONDITION%"'
+  - conda build-all recipes --inspect-channels mcs07 --upload-channels mcs07 --matrix-conditions "numpy >=1.11" "%PY_CONDITION%" "r-base >=3.3.2"
