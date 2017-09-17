@@ -30,6 +30,6 @@ about:
   home: https://github.com/mcs07/CIRpy
   license: MIT
   license_file: LICENSE
-  summary: 'Python wrapper for the NCI Chemical Identifier Resolver (CIR) '
+  summary: 'Python wrapper for the NCI Chemical Identifier Resolver (CIR)'
   doc_url: http://cirpy.readthedocs.io
   dev_url: https://github.com/mcs07/CIRpy
