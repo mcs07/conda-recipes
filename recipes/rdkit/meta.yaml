@@ -16,6 +16,7 @@ source:
 
 build:
   number: 1
+  skip: True
   features:
     - vc9  # [win and py27]
     - vc14  # [win and py>=35]
