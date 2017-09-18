@@ -2,6 +2,7 @@ mkdir build
 cd build
 
 cmake -G "%CMAKE_GENERATOR%" ^
+      -D CMAKE_BUILD_TYPE=Release ^
       -D BUILD_PROG=1 ^
       -D CMAKE_PREFIX_PATH=%LIBRARY_PREFIX% ^
       -D CMAKE_INCLUDE_PATH=%LIBRARY_INC% ^
