@@ -7,7 +7,7 @@ index 25ded3c..07c8f7d 100644
  ###############################################################################
  
 +find_file(STDINT_H stdint.h)
-+set_filename_component(STDINT_INCLUDE_DIR "$STDINT_H" DIRECTORY)
++get_filename_component(STDINT_INCLUDE_DIR "$STDINT_H" DIRECTORY)
 +include_directories(${STDINT_INCLUDE_DIR})
 +
  set(AUTOCONFIG_SRC ${CMAKE_BINARY_DIR}/config_auto.h.in)
