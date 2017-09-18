@@ -10,9 +10,11 @@ source:
   fn: {{ version }}.tar.gz
   url: https://github.com/tesseract-ocr/tesseract/archive/{{ version }}.tar.gz
   sha256: {{ sha256 }}
+  patches:
+    - cmake.patch  # [win and py27]
 
 build:
-  number: 3
+  number: 4
   skip: True  # [win and py>35]
   features:
     - vc9  # [win and py27]
