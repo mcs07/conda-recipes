@@ -25,7 +25,7 @@ index d53904a..856fd3a 100644
  # ====================================================================
  
 -set(Leptonica_LIBRARIES leptonica)
-+set(Leptonica_LIBRARIES "${_leptonica_install_prefix}/lib/leptonica.lib")
++set(Leptonica_LIBRARIES "${_leptonica_install_prefix}/lib/leptonica-@VERSION_PLAIN@.lib")
 diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
 index 8806540..e9e5027 100644
 --- a/src/CMakeLists.txt
