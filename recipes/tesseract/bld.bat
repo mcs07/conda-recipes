@@ -16,7 +16,7 @@ if errorlevel 1 exit 1
 cmake --build . --config Release --target install 
 if errorlevel 1 exit 1
 
-mkdir %LIBRARY_PREFIX%\share\tessdata
-cd %LIBRARY_PREFIX%\share\tessdata
+mkdir %LIBRARY_BIN%\tessdata
+cd %LIBRARY_BIN%\tessdata
 curl -L -O "https://github.com/tesseract-ocr/tessdata/raw/3.04.00/eng.traineddata"
 curl -L -O "https://github.com/tesseract-ocr/tessdata/raw/3.04.00/osd.traineddata"
