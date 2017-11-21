@@ -12,6 +12,7 @@ source:
   sha256: {{ sha256 }}
   patches:
     - cmake.patch  # [win and py27]
+    - makerow_int32.patch  # [win and py27]
     # Install gettimeofday.h header to include directory
     - gettimeofday.patch  # [win]
     # Rename timezone struct to avoid name clash
