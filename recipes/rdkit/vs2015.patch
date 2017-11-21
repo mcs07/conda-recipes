@@ -271,7 +271,7 @@ index 295a8354..cdac6bec 100644
    std::ostringstream ss;
    ss << "SLNParseException: " << x.message();
 diff --git a/Code/GraphMol/SubstructLibrary/Wrap/SubstructLibraryWrap.cpp b/Code/GraphMol/SubstructLibrary/Wrap/SubstructLibraryWrap.cpp
-index 0ccf050c..5a335b0f 100644
+index 0ccf050c..1a32c4a1 100644
 --- a/Code/GraphMol/SubstructLibrary/Wrap/SubstructLibraryWrap.cpp
 +++ b/Code/GraphMol/SubstructLibrary/Wrap/SubstructLibraryWrap.cpp
 @@ -36,6 +36,19 @@
@@ -282,12 +282,12 @@ index 0ccf050c..5a335b0f 100644
 +#if defined(_MSC_VER) && (_MSC_VER == 1900) && (_MSC_FULL_VER >= 190024210)
 +namespace boost {
 +  template<> const volatile ExplicitBitVect* get_pointer(const volatile ExplicitBitVect* p) { return p; }
-+  template<> const volatile RDKit::FPHolderBase* get_pointer(const volatile FPHolderBase* p) { return p; }
-+  template<> const volatile RDKit::MolHolder* get_pointer(const volatile MolHolder* p) { return p; }
-+  template<> const volatile RDKit::CachedMolHolder* get_pointer(const volatile CachedMolHolder* p) { return p; }
-+  template<> const volatile RDKit::CachedSmilesMolHolder* get_pointer(const volatile CachedSmilesMolHolder* p) { return p; }
-+  template<> const volatile RDKit::CachedTrustedSmilesMolHolder* get_pointer(const volatile CachedTrustedSmilesMolHolder* p) { return p; }
-+  template<> const volatile RDKit::PatternHolder* get_pointer(const volatile PatternHolder* p) { return p; }
++  template<> const volatile RDKit::FPHolderBase* get_pointer(const volatile RDKit::FPHolderBase* p) { return p; }
++  template<> const volatile RDKit::MolHolder* get_pointer(const volatile RDKit::MolHolder* p) { return p; }
++  template<> const volatile RDKit::CachedMolHolder* get_pointer(const volatile RDKit::CachedMolHolder* p) { return p; }
++  template<> const volatile RDKit::CachedSmilesMolHolder* get_pointer(const volatile RDKit::CachedSmilesMolHolder* p) { return p; }
++  template<> const volatile RDKit::CachedTrustedSmilesMolHolder* get_pointer(const volatile RDKit::CachedTrustedSmilesMolHolder* p) { return p; }
++  template<> const volatile RDKit::PatternHolder* get_pointer(const volatile RDKit::PatternHolder* p) { return p; }
 +}
 +#endif
 +
