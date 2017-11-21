@@ -1,0 +1,39 @@
+{% set name = "MolVS" %}
+{% set version = "0.0.9" %}
+{% set sha256 = "6000dcccfbb4e1b2c86dd014b636339698f49471950d155703a8ef9b07e940fe" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  fn: {{ name }}-{{ version }}.tar.gz
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: {{ sha256 }}
+
+build:
+  noarch: python
+  number: 0
+  script: python setup.py install --single-version-externally-managed --record=record.txt
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - six
+  run:
+    - python
+    - rdkit
+    - six
+
+test:
+  imports:
+    - molvs
+
+about:
+  home: https://github.com/mcs07/MolVS
+  license: MIT
+  license_file: LICENSE
+  summary: 'Molecule Validation and Standardization'
+  doc_url: https://molvs.readthedocs.io
+  dev_url: https://github.com/mcs07/MolVS
