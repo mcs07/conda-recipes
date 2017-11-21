@@ -271,10 +271,10 @@ index 295a8354..cdac6bec 100644
    std::ostringstream ss;
    ss << "SLNParseException: " << x.message();
 diff --git a/Code/GraphMol/SubstructLibrary/Wrap/SubstructLibraryWrap.cpp b/Code/GraphMol/SubstructLibrary/Wrap/SubstructLibraryWrap.cpp
-index 0ccf050c..89ebf328 100644
+index 0ccf050c..66a4696b 100644
 --- a/Code/GraphMol/SubstructLibrary/Wrap/SubstructLibraryWrap.cpp
 +++ b/Code/GraphMol/SubstructLibrary/Wrap/SubstructLibraryWrap.cpp
-@@ -36,6 +36,13 @@
+@@ -36,6 +36,19 @@
  
  namespace python = boost::python;
  
@@ -282,6 +282,12 @@ index 0ccf050c..89ebf328 100644
 +#if defined(_MSC_VER) && (_MSC_VER == 1900) && (_MSC_FULL_VER >= 190024210)
 +namespace boost {
 +  template<> const volatile ExplicitBitVect* get_pointer(const volatile ExplicitBitVect* p) { return p; }
++  template<> const volatile FPHolderBase* get_pointer(const volatile FPHolderBase* p) { return p; }
++  template<> const volatile MolHolder* get_pointer(const volatile MolHolder* p) { return p; }
++  template<> const volatile CachedMolHolder* get_pointer(const volatile CachedMolHolder* p) { return p; }
++  template<> const volatile CachedSmilesMolHolder* get_pointer(const volatile CachedSmilesMolHolder* p) { return p; }
++  template<> const volatile CachedTrustedSmilesMolHolder* get_pointer(const volatile CachedTrustedSmilesMolHolder* p) { return p; }
++  template<> const volatile PatternHolder* get_pointer(const volatile PatternHolder* p) { return p; }
 +}
 +#endif
 +
