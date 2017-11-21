@@ -270,6 +270,24 @@ index 295a8354..cdac6bec 100644
  void rdSLNParseExceptionTranslator(RDKit::SLNParseException const &x) {
    std::ostringstream ss;
    ss << "SLNParseException: " << x.message();
+diff --git a/Code/GraphMol/SubstructLibrary/Wrap/SubstructLibraryWrap.cpp b/Code/GraphMol/SubstructLibrary/Wrap/SubstructLibraryWrap.cpp
+index 0ccf050c..89ebf328 100644
+--- a/Code/GraphMol/SubstructLibrary/Wrap/SubstructLibraryWrap.cpp
++++ b/Code/GraphMol/SubstructLibrary/Wrap/SubstructLibraryWrap.cpp
+@@ -36,6 +36,13 @@
+ 
+ namespace python = boost::python;
+ 
++// Workaround for bug in Visual Studio 2015 Update 3
++#if defined(_MSC_VER) && (_MSC_VER == 1900) && (_MSC_FULL_VER >= 190024210)
++namespace boost {
++  template<> const volatile ExplicitBitVect* get_pointer(const volatile ExplicitBitVect* p) { return p; }
++}
++#endif
++
+ namespace RDKit {
+ 
+ const char * MolHolderBaseDoc = "Base class for holding molecules used in the Substructure Library.\n" \
 diff --git a/Code/GraphMol/Wrap/Atom.cpp b/Code/GraphMol/Wrap/Atom.cpp
 index b405dafb..455fe3bf 100644
 --- a/Code/GraphMol/Wrap/Atom.cpp
