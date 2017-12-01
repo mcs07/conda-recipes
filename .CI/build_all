@@ -30,4 +30,4 @@ conda install --yes --quiet conda-forge-build-setup
 source run_conda_forge_build_setup
 
 # We just want to build all of the recipes.
-conda build-all ./recipes --inspect-channels mcs07 --upload-channels mcs07 --matrix-condition "numpy >=1.11" "python >=2.7,<3|>=3.5" "r-base >=3.3.2"
+conda build-all ./recipes --inspect-channels mcs07 --upload-channels mcs07 --matrix-condition "numpy >=1.11" "$PY_CONDITION" "r-base >=3.3.2"
