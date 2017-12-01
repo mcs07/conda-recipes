@@ -10,3 +10,8 @@ env:
     - PY_CONDITION="python >=3.6"
 script:
   - source ./.CI/build_all
+cache:
+  directories:
+    - $HOME/cache
+before_cache:
+  - find $HOME/cache/pkgs/ -mindepth 1 -maxdepth 1 -type d -exec rm -r {} \;
