@@ -31,5 +31,5 @@ if errorlevel 1 exit 1
 :: Some expected test failures mean we can't run this...
 :: ctest
 
-nmake install
+cmake --build . --target install --config Release
 if errorlevel 1 exit 1
