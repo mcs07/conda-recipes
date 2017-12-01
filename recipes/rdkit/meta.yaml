@@ -16,7 +16,7 @@ source:
     - vs2015.patch  # [win and py>=35]
 
 build:
-  number: 0
+  number: 1
   features:
     - vc9  # [win and py27]
     - vc14  # [win and py>=35]
@@ -24,6 +24,7 @@ build:
 requirements:
   build:
     - cmake
+    - ninja
     - boost 1.64.*
     - python
     - numpy 1.11.*

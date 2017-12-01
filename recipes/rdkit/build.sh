@@ -3,6 +3,7 @@
 PY_INC=`$PYTHON -c "from distutils import sysconfig; print (sysconfig.get_python_inc(0, '$PREFIX'))"`
 
 cmake \
+    -G "Ninja" \
     -D RDK_INSTALL_INTREE=OFF \
     -D RDK_INSTALL_STATIC_LIBS=OFF \
     -D RDK_BUILD_INCHI_SUPPORT=ON \
@@ -20,8 +21,8 @@ cmake \
     -D CMAKE_BUILD_TYPE=Release \
     .
 
-make -j$CPU_COUNT
+cmake --build . --config Release
 
 # TODO: ctest
 
-make install
+cmake --build . --target install --config Release

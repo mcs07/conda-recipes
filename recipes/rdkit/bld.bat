@@ -2,7 +2,7 @@ set LIB=%LIBRARY_LIB%;%LIB%
 set LIBPATH=%LIBRARY_LIB%;%LIBPATH%
 set INCLUDE=%LIBRARY_INC%;%INCLUDE%;%RECIPE_DIR%
 
-cmake -G "NMake Makefiles" ^
+cmake -G "Ninja" ^
     -D CMAKE_BUILD_TYPE=Release ^
     -D CMAKE_PREFIX_PATH=%LIBRARY_PREFIX% ^
     -D RDK_INSTALL_INTREE=OFF ^
