@@ -22,11 +22,6 @@ if [ ! -f $HOME/miniconda/bin/activate ]; then
     source ~/miniconda/bin/activate root
 fi
 
-# Reuse packages from the cache.
-mv -n ~/miniconda/pkgs ~/cache/pkgs
-rm -rf ~/miniconda/pkgs
-ln -s ~/cache/pkgs ~/miniconda/pkgs
-
 # Configure conda.
 echo ""
 echo "Configuring conda."
