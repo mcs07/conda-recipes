@@ -5,13 +5,13 @@ env:
   global:
   - secure: JEphGXJRvwaHWIvMlvDBzO4URA+lct0H93uOWwOQpVNBkD3aqfneErWyqnHZn0eqNGl96sJwCKuEPrJ3+66RsSFRUKDDnn0mZbLgFw2MRVdP8n1sJr/6apIyNqGVLGoKQ2bMDNP2LBw2QeIDU1kL25PhkndR0OOuwq51B0twCDFhnM7K8mHzpWB3MRyKV6gh7N1kLbKXo5EQVFmZiRRE+8x2isOlBFiig+kwxKxyS74qfelFhkuwCk7LtcF/Gl+3Rsqh1QJxYTECrhkEcnQyh9HLQyCMxl/KfdO9LtkA7x+Isitm2DlrSq+TmVCsEuhzRwxAIMjsNSA7mS2Cr5/HN/4C+ujLb0pyInPvfbNmgALhVcejTsm29yuPGAOOG3j5H2Bs5ZIMYMiBHaw4kPvyxjpcPoCwjkS+AEuBRtWTqmtUjMQnYAWXONNnW51P1KnHVkb8deqHC9nrCq62awO8skC5+DBtzYPUlbiO35Ehy3Mj7/5pgtZ+QXWiE1mWvDJd/YLQZ4SH/z0vGsJDJ2ESwDTbQpUKODmFC5qx44mLuaLgpZ21tjT3L9OcW6hU+RC0qEzJxEiu5yEgTGizpudUSoF5A58eC9MRH/9Rf6WNL+ClyLTL1tNE4kjxYbtYDjKbhAlR9/jHDq1svKsluqq8ltlywKqg9ZOUg3fqczh+yN8=
   matrix:
-    - PY_CONDITION="python >=2.7,<3"
-    - PY_CONDITION="python >=3.5,<3.6"
-    - PY_CONDITION="python >=3.6"
+    - PY_CONDITION="python >=2.7,<3" MINICONDA_FILE=Miniconda2-latest-MacOSX-x86_64.sh
+    - PY_CONDITION="python >=3.5,<3.6" MINICONDA_FILE=Miniconda3-latest-MacOSX-x86_64.sh
+    - PY_CONDITION="python >=3.6" MINICONDA_FILE=Miniconda3-latest-MacOSX-x86_64.sh
 script:
   - source ./.CI/build_all
 cache:
   directories:
-    - $HOME/cache
+    - $HOME/miniconda
 before_cache:
-  - find $HOME/cache/pkgs/ -mindepth 1 -maxdepth 1 -type d -exec rm -r {} \;
+  - rm -rf $HOME/miniconda/conda-bld

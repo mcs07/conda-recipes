@@ -13,11 +13,14 @@ chmod +x ~/uninstall_homebrew
 rm ~/uninstall_homebrew
 
 # Install Miniconda.
-echo ""
-echo "Installing a fresh version of Miniconda."
-curl -L https://repo.continuum.io/miniconda/Miniconda3-latest-MacOSX-x86_64.sh > ~/miniconda.sh
-bash ~/miniconda.sh -b -p ~/miniconda
-source ~/miniconda/bin/activate root
+if [ ! -f $HOME/miniconda/bin/activate ]; then
+    echo ""
+    echo "Installing a fresh version of Miniconda."
+    rm -rf $HOME/miniconda
+    curl -L https://repo.continuum.io/miniconda/$MINICONDA_FILE > ~/miniconda.sh
+    bash ~/miniconda.sh -b -p ~/miniconda
+    source ~/miniconda/bin/activate root
+fi
 
 # Reuse packages from the cache.
 mv -n ~/miniconda/pkgs ~/cache/pkgs
