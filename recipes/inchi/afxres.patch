@@ -1,0 +1,22 @@
+diff --git a/INCHI_API/libinchi/vc9/afxres.h b/INCHI_API/libinchi/vc9/afxres.h
+new file mode 100644
+index 0000000..c2a889a
+--- /dev/null
++++ INCHI_API/libinchi/vc9/afxres.h
+@@ -0,0 +1,5 @@
++// afxres.h is something that comes with MFC
++// create a fake version.
++// see http://stackoverflow.com/questions/3566018/cannot-open-include-file-afxres-h-in-vc2010-express
++#include "WinResrc.h"
++#define IDC_STATIC  -1
+diff --git a/INCHI_EXE/inchi-1/vc9/afxres.h b/INCHI_EXE/inchi-1/vc9/afxres.h
+new file mode 100644
+index 0000000..c2a889a
+--- /dev/null
++++ INCHI_EXE/inchi-1/vc9/afxres.h
+@@ -0,0 +1,5 @@
++// afxres.h is something that comes with MFC
++// create a fake version.
++// see http://stackoverflow.com/questions/3566018/cannot-open-include-file-afxres-h-in-vc2010-express
++#include "WinResrc.h"
++#define IDC_STATIC  -1
