@@ -1,6 +1,6 @@
 {% set name = "MolVS" %}
-{% set version = "0.0.9" %}
-{% set sha256 = "6000dcccfbb4e1b2c86dd014b636339698f49471950d155703a8ef9b07e940fe" %}
+{% set version = "0.1.0" %}
+{% set sha256 = "07341aefa724f88be91746f60b6f9151c04374ae82cb1a9325f9f51e7c1a622f" %}
 
 package:
   name: {{ name|lower }}
@@ -14,7 +14,6 @@ source:
 build:
   noarch: python
   number: 0
-  skip: true
   script: python setup.py install --single-version-externally-managed --record=record.txt
 
 requirements:
