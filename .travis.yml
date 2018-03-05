@@ -9,4 +9,4 @@ env:
     - PY_CONDITION="python >=3.5,<3.6"
     - PY_CONDITION="python >=3.6"
 script:
-  - source ./.CI/build_all
+  - source ./.travis/build_all

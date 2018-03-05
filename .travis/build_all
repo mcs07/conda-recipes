@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-
 # Set the numpy variable. This isn't used, but conda-build complains if we haven't set it already.
 export CONDA_NPY=19
 
