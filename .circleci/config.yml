@@ -10,4 +10,8 @@ jobs:
         - master
     steps:
       - run:
+          command: ls
+      - run:
+          command: pwd
+      - run:
           command: bash .CI/circleci_build.sh
