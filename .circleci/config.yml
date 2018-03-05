@@ -8,9 +8,6 @@ jobs:
       only:
         - master
     steps:
-      - run:
-          command: ls
-      - run:
-          command: pwd
+      - checkout
       - run:
           command: bash .CI/circleci_build.sh
