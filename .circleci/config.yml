@@ -9,4 +9,4 @@ jobs:
         - master
     steps:
       - run:
-          command: ./.circleci/run_docker_build.sh
+          command: bash .circleci/run_docker_build.sh
