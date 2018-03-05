@@ -2,6 +2,7 @@ version: 2
 
 jobs:
   build:
+    working_directory: ~/test
     docker:
       - image: condaforge/linux-anvil
     branches:
