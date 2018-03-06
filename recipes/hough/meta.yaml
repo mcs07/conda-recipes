@@ -9,18 +9,20 @@ source:
   sha256: 19cddcd65ed1be9ffd3a21f747fc5dd3712f541fd3c03dc3ce4df443bb050f16
 
 build:
-  number: 0
+  number: 1
   script: python setup.py install --single-version-externally-managed --record=record.txt
 
 requirements:
   build:
     - python
     - setuptools
-    - cython
-    - numpy
+    - cython >=0.23
+    - numpy 1.11.*  # [not (win32 and py36)]
+    - numpy 1.12.*  # [win32 and py36]
   run:
     - python
-    - numpy
+    - numpy >=1.11  # [not (win32 and py36)]
+    - numpy >=1.12  # [win32 and py36]
 
 test:
   imports:
