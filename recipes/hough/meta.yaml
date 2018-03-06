@@ -1,0 +1,32 @@
+{% set version = "0.0.2" %}
+
+package:
+  name: hough
+  version: {{ version }}
+
+source:
+  url: https://pypi.io/packages/source/h/hough/hough-{{ version }}.tar.gz
+  sha256: 19cddcd65ed1be9ffd3a21f747fc5dd3712f541fd3c03dc3ce4df443bb050f16
+
+build:
+  number: 0
+  script: python setup.py install --single-version-externally-managed --record=record.txt
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - cython
+    - numpy
+  run:
+    - python
+    - numpy
+
+test:
+  imports:
+    - hough
+
+about:
+  home: https://github.com/mcs07/hough
+  summary: "Temporary patched version of the scikit-image probabilistic Hough transform."
+  license: Modified BSD
