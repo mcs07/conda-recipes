@@ -11,7 +11,7 @@ channels:
  - conda-forge
  - defaults
 conda-build:
- root-dir: /conda-recipes/build_artefacts
+ root-dir: /home/conda/conda-recipes/build_artifacts
 always_yes: true
 show_channel_urls: true
 CONDARC
@@ -30,7 +30,7 @@ fi
 # Unused, but needed by conda-build currently... :(
 export CONDA_NPY='19'
 echo "$config" > ~/.condarc
-# A lock sometimes occurs with incomplete builds. The lock file is stored in build_artefacts.
+# A lock sometimes occurs with incomplete builds. The lock file is stored in build_artifacts.
 conda clean --lock
 conda update conda conda-build
 conda install conda-build-all
