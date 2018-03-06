@@ -2,12 +2,14 @@ version: 2
 
 jobs:
   build:
-    docker:
-      - image: condaforge/linux-anvil
+    working_directory: ~/test
+    machine: true
     branches:
       only:
         - master
     steps:
       - checkout
       - run:
-          command: ./.CI/circleci_build.sh
+          command: docker pull condaforge/linux-anvil
+      - run:
+          command: ./.circleci/run_docker_build.sh
