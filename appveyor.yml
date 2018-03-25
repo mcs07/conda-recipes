@@ -32,16 +32,18 @@ platform:
   - x64
 
 install:
+  - cmd: set CONDA_NPY=19
   - cmd: rmdir C:\cygwin /s /q
   - cmd: call %CONDA_INSTALL_LOCN%\Scripts\activate.bat
-  - cmd: conda.exe update --yes --quiet conda
   - cmd: conda.exe config --add channels conda-forge
   - cmd: conda.exe config --add channels mcs07
   - cmd: conda.exe config --set show_channel_urls true
   - cmd: conda.exe config --set add_pip_as_python_dependency false
-  - cmd: conda.exe install -n root --yes --quiet conda-forge-build-setup
-  - cmd: run_conda_forge_build_setup
-  - cmd: conda.exe -n root install --yes --quiet conda-build-all anaconda-client=1.6.5
+  - cmd: appveyor-retry conda.exe update --yes --quiet conda
+  - cmd: appveyor-retry conda.exe install -n root --yes --quiet conda-build-all
+  - cmd: appveyor-retry conda.exe install -n root --yes --quiet conda-forge-build-setup
+  - cmd: appveyor-retry run_conda_forge_build_setup
+  - cmd: appveyor-retry conda.exe -n root install --yes --quiet anaconda-client=1.6.5
   - cmd: conda.exe info
   - cmd: conda.exe config --get
 
