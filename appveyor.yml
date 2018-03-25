@@ -1,6 +1,6 @@
 environment:
   BINSTAR_TOKEN:
-    secure: HQqdcPmLjN0dtBOCoqCHfZkwxSQoTu7234aYJl6yffbWFTe6dOwDmXGzzVOja5/m
+    secure: YJa9B6I4KDmsY9+HAZYnx//O60W1Majef1mN2z+UU4qJDEzVyDw44ppEjlLgffUu
   PYTHONIOENCODING: "UTF-8"
   matrix:
     - TARGET_ARCH: "x86"
