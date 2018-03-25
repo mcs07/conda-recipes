@@ -10,19 +10,22 @@ source:
   fn: {{ name }}-{{ version }}.tar.gz
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: {{ sha256 }}
+  patches:
+    - tesseract4beta.patch  # Workaround for bug in tesseract 4 beta. Has been fixed in tesseract master.
+    - tesseract4beta2.patch  # Upstream commit from tesserocr master.
 
 build:
-  number: 0
+  number: 1
 
 requirements:
   build:
     - python
     - setuptools
     - cython
-    - tesseract
+    - tesseract 4.*
   run:
     - python
-    - tesseract
+    - tesseract 4.*
 
 test:
   imports:
