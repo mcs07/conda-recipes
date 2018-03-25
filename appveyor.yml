@@ -48,4 +48,4 @@ install:
 build: off
 
 test_script:
-  - conda build-all recipes --inspect-channels mcs07 --upload-channels mcs07 --matrix-conditions "numpy >=1.11" "%PY_CONDITION%" "r-base >=3.3.2"
+  - conda.exe build-all recipes --inspect-channels mcs07 --upload-channels mcs07 --matrix-conditions "numpy >=1.11" "%PY_CONDITION%" "r-base >=3.3.2"
