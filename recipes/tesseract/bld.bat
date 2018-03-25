@@ -22,8 +22,8 @@ copy %LIBRARY_LIB%\tesseract305.lib %LIBRARY_LIB%\tesseract.lib
 :: Download tessdata to bin directory so tesseract executable works
 mkdir %LIBRARY_BIN%\tessdata
 cd %LIBRARY_BIN%\tessdata
-curl -L -O "https://github.com/tesseract-ocr/tessdata/raw/3.04.00/eng.traineddata"
-curl -L -O "https://github.com/tesseract-ocr/tessdata/raw/3.04.00/osd.traineddata"
+curl -L -O "https://github.com/tesseract-ocr/tessdata_fast/raw/4.0.0-beta.1/eng.traineddata"
+curl -L -O "https://github.com/tesseract-ocr/tessdata_fast/raw/4.0.0-beta.1/osd.traineddata"
 
 :: Copy tessdata to build prefix so tesseract API works
 mkdir %PREFIX%\tessdata
