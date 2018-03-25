@@ -40,7 +40,7 @@ install:
   - cmd: conda config --set show_channel_urls true
   - cmd: conda config --set add_pip_as_python_dependency false
   - cmd: conda update --yes --quiet conda
-  - cmd: conda install --yes --quiet conda-build-all
+  - cmd: conda install --yes --quiet conda-build-all anaconda-client=1.6.5
   - cmd: conda install --yes --quiet conda-forge-build-setup
   - cmd: run_conda_forge_build_setup
   - cmd: conda info
