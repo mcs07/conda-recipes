@@ -38,7 +38,7 @@ install:
   - cmd: conda.exe config --add channels conda-forge
   - cmd: conda.exe config --add channels mcs07
   - cmd: conda.exe config --set show_channel_urls true
-  - cmd: conda .execonfig --set add_pip_as_python_dependency false
+  - cmd: conda.exe config --set add_pip_as_python_dependency false
   - cmd: conda.exe install -n root --yes --quiet conda-forge-build-setup
   - cmd: run_conda_forge_build_setup
   - cmd: conda.exe -n root install --yes --quiet conda-build-all anaconda-client=1.6.5
