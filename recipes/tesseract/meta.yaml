@@ -1,6 +1,6 @@
 {% set name = "tesseract" %}
-{% set version = "3.05.01" %}
-{% set sha256 = "05898f93c5d057fada49b9a116fc86ad9310ff1726a0f499c3e5211b3af47ec1" %}
+{% set version = "4.0.0b1" %}
+{% set sha256 = "122ded950050abba89897ce8cc9fe57b45149640c46d4baa5abfc7048d2e406a" %}
 
 package:
   name: {{ name|lower }}
@@ -8,7 +8,7 @@ package:
 
 source:
   fn: {{ version }}.tar.gz
-  url: https://github.com/tesseract-ocr/tesseract/archive/{{ version }}.tar.gz
+  url: https://github.com/tesseract-ocr/tesseract/archive/4.0.0-beta.1.tar.gz
   sha256: {{ sha256 }}
   patches:
     - cmake.patch  # [win and py27]
@@ -19,7 +19,7 @@ source:
     - timezone.patch  # [win]
 
 build:
-  number: 10
+  number: 0
   skip: True  # [win and py>35]
   features:
     - vc9  # [win and py27]
@@ -28,7 +28,9 @@ build:
 
 requirements:
   build:
+    - toolchain
     - autoconf  # [not win]
+    - autoconf-archive  # [not win]
     - automake  # [not win]
     - libtool  # [not win]
     - pkg-config  # [not win]

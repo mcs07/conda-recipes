@@ -25,5 +25,5 @@ make install
 
 mkdir -p $PREFIX/share/tessdata
 cd $PREFIX/share/tessdata
-curl -L -O "https://github.com/tesseract-ocr/tessdata/raw/3.04.00/eng.traineddata"
-curl -L -O "https://github.com/tesseract-ocr/tessdata/raw/3.04.00/osd.traineddata"
+curl -L -O "https://github.com/tesseract-ocr/tessdata_fast/raw/4.0.0-beta.1/eng.traineddata"
+curl -L -O "https://github.com/tesseract-ocr/tessdata_fast/raw/4.0.0-beta.1/osd.traineddata"
