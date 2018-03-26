@@ -13,13 +13,14 @@ source:
   patches:
     - cmake.patch  # [win and py27]
     - makerow_int32.patch  # [win and py27]
+    - vs2008stdint.patch  # [win and py27]
     # Install gettimeofday.h header to include directory
     - gettimeofday.patch  # [win]
     # Rename timezone struct to avoid name clash
     - timezone.patch  # [win]
 
 build:
-  number: 0
+  number: 1
   skip: True  # [win and py>35]
   features:
     - vc9  # [win and py27]

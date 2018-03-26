@@ -1,0 +1,15 @@
+diff --git a/ccutil/host.h b/ccutil/host.h
+index 248e6cb9..2bb4c3dd 100644
+--- a/ccutil/host.h
++++ b/ccutil/host.h
+@@ -27,8 +27,8 @@
+ #undef max
+ #endif
+ 
+-#include <cinttypes>  // PRId32, ...
+-#include <cstdint>    // int32_t, ...
++#include <inttypes.h>  // PRId32, ...
++#include <stdint.h>    // int32_t, ...
+ 
+ // definitions of portable data types (numbers and characters)
+ typedef int8_t inT8;
