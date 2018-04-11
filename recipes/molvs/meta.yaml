@@ -1,6 +1,6 @@
 {% set name = "MolVS" %}
-{% set version = "0.1.0" %}
-{% set sha256 = "07341aefa724f88be91746f60b6f9151c04374ae82cb1a9325f9f51e7c1a622f" %}
+{% set version = "0.1.1" %}
+{% set sha256 = "3679713d95774f69625e42b7e83b161be48df8d994768ba2786440f085497474" %}
 
 package:
   name: {{ name|lower }}
