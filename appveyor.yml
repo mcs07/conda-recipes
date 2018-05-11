@@ -1,32 +1,9 @@
 environment:
   BINSTAR_TOKEN:
     secure: YJa9B6I4KDmsY9+HAZYnx//O60W1Majef1mN2z+UU4qJDEzVyDw44ppEjlLgffUu
-  PYTHONIOENCODING: "UTF-8"
+  CONDA_INSTALL_LOCN: "C:\\Miniconda36-x64"
   matrix:
-    - TARGET_ARCH: "x86"
-      CONDA_PY: "27"
-      PY_CONDITION: "python >=2.7,<3"
-      CONDA_INSTALL_LOCN: "C:\\Miniconda"
-    - TARGET_ARCH: "x86"
-      CONDA_PY: "35"
-      PY_CONDITION: "python >=3.5,<3.6"
-      CONDA_INSTALL_LOCN: "C:\\Miniconda35"
-    - TARGET_ARCH: "x86"
-      CONDA_PY: "36"
-      PY_CONDITION: "python >=3.6"
-      CONDA_INSTALL_LOCN: "C:\\Miniconda36"
-    - TARGET_ARCH: "x64"
-      CONDA_PY: "27"
-      PY_CONDITION: "python >=2.7,<3"
-      CONDA_INSTALL_LOCN: "C:\\Miniconda-x64"
-    - TARGET_ARCH: "x64"
-      CONDA_PY: "35"
-      PY_CONDITION: "python >=3.5,<3.6"
-      CONDA_INSTALL_LOCN: "C:\\Miniconda35-x64"
-    - TARGET_ARCH: "x64"
-      CONDA_PY: "36"
-      PY_CONDITION: "python >=3.6"
-      CONDA_INSTALL_LOCN: "C:\\Miniconda36-x64"
+    - PLATFORM: "64"
 
 platform:
   - x64
@@ -38,16 +15,13 @@ install:
   - cmd: conda.exe config --add channels conda-forge
   - cmd: conda.exe config --add channels mcs07
   - cmd: conda.exe config --set show_channel_urls true
-  - cmd: conda.exe config --set add_pip_as_python_dependency false
   - cmd: appveyor-retry conda.exe update --yes --quiet conda
-  - cmd: appveyor-retry conda.exe install -n root --yes --quiet conda-build-all
-  - cmd: appveyor-retry conda.exe install -n root --yes --quiet conda-forge-build-setup
+  - cmd: appveyor-retry conda.exe install --yes --quiet conda-forge-pinning conda-forge-ci-setup=1.* networkx anaconda-client
   - cmd: appveyor-retry run_conda_forge_build_setup
-  - cmd: appveyor-retry conda.exe install -n root --yes --quiet anaconda-client=1.6.5
   - cmd: conda.exe info
   - cmd: conda.exe config --get
 
 build: off
 
 test_script:
-  - conda.exe build-all recipes --inspect-channels mcs07 --upload-channels mcs07 --matrix-conditions "numpy >=1.11" "%PY_CONDITION%" "r-base >=3.3.2"
+  - python .ci_support\build_all.py recipes --arch %PLATFORM%
