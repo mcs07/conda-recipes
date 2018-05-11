@@ -14,7 +14,7 @@ source:
     - afxres.patch  # [win]
 
 build:
-  number: 0
+  number: 1
   skip: True  # [osx]
   features:
     - vc9  # [win and py27]

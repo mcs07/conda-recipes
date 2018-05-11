@@ -14,6 +14,7 @@ if "%VS_YEAR%" == "2008" (
 )
 mkdir %LIBRARY_INC%\inchi\
 copy %SRC_DIR%\INCHI_API\libinchi\src\*.h %LIBRARY_INC%\inchi\*
+copy %SRC_DIR%\INCHI_BASE\src\*.h %LIBRARY_INC%\inchi\*
 copy %SRC_DIR%\INCHI_API\bin\Windows\%PLATFORM%\Release\libinchi.dll %LIBRARY_BIN%\libinchi.dll
 copy %SRC_DIR%\INCHI_API\bin\Windows\%PLATFORM%\Release\libinchi.lib %LIBRARY_LIB%\libinchi.lib
 copy %SRC_DIR%\INCHI_API\bin\Windows\%PLATFORM%\Release\libinchi.exp %LIBRARY_LIB%\libinchi.exp
