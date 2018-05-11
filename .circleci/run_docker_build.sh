@@ -12,9 +12,6 @@ channels:
  - conda-forge
  - defaults
 
-conda-build:
- root-dir: /home/conda/conda-recipes/build_artifacts
-
 always_yes: true
 show_channel_urls: true
 
@@ -31,8 +28,6 @@ if hash docker-machine 2> /dev/null && docker-machine active > /dev/null; then
     HOST_USER_ID=$(docker-machine ssh $(docker-machine active) id -u)
 fi
 
-rm -f "$REPO_ROOT/build_artefacts/conda-forge-build-done"
-
 cat << EOF | docker run -i \
                         -v ${REPO_ROOT}:/home/conda/conda-recipes \
                         -a stdin -a stdout -a stderr \
@@ -43,10 +38,6 @@ cat << EOF | docker run -i \
 if [ "${BINSTAR_TOKEN}" ];then
     export BINSTAR_TOKEN=${BINSTAR_TOKEN}
 fi
-
-# Copy the host recipes folder so we don't ever muck with it
-cp -r /home/conda/conda-recipes/recipes ~/conda-recipes
-cp -r /home/conda/conda-recipes/.ci_support ~/.ci_support
 
 # Unused, but needed by conda-build currently... :(
 export CONDA_NPY='19'
