@@ -34,3 +34,7 @@ about:
   summary: 'A simple Python wrapper around the PubChem PUG REST API.'
   doc_url: http://pubchempy.readthedocs.io/
   dev_url: https://github.com/mcs07/PubChemPy
+
+extra:
+  recipe-maintainers:
+    - mcs07

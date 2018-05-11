@@ -24,3 +24,7 @@ requirements:
 about:
   home: https://savannah.gnu.org/projects/autoconf-archive/
   summary: Collection of over 500 reusable autoconf macros
+
+extra:
+  recipe-maintainers:
+    - mcs07

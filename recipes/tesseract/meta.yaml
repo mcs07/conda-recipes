@@ -65,3 +65,7 @@ about:
   home: https://github.com/tesseract-ocr/tesseract
   license: Apache License 2.0
   summary: Open Source OCR Engine
+
+extra:
+  recipe-maintainers:
+    - mcs07

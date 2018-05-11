@@ -35,3 +35,7 @@ about:
   home: https://github.com/sirfz/tesserocr
   summary: "A simple, Pillow-friendly, Python wrapper around tesseract-ocr API using Cython"
   license: MIT
+
+extra:
+  recipe-maintainers:
+    - mcs07

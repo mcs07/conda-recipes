@@ -40,3 +40,7 @@ about:
   summary: 'Python wrapper for the ChemSpider API'
   doc_url: http://chemspipy.readthedocs.io
   dev_url: https://github.com/mcs07/ChemSpiPy
+
+extra:
+  recipe-maintainers:
+    - mcs07

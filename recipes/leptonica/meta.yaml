@@ -52,3 +52,7 @@ about:
   home: https://github.com/DanBloomberg/leptonica
   license: FreeBSD 2-clause license
   summary: Leptonica image processing library
+
+extra:
+  recipe-maintainers:
+    - mcs07
