@@ -58,5 +58,5 @@ find ~/conda-recipes -mindepth 2 -maxdepth 2 -type f -name "yum_requirements.txt
 conda info
 conda config --get
 
-python ~/conda-recipes/.ci_support/build_all.py ~/conda-recipes
+python ~/conda-recipes/.ci_support/build_all.py ~/conda-recipes/recipes
 EOF
