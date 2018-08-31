@@ -1,6 +1,6 @@
 {% set name = "tesserocr" %}
-{% set version = "2.2.2" %}
-{% set sha256 = "f245c85643acaa6c740885c2cb18c6ca2ddb569756fbdeb10bd85a08c0a9fff2" %}
+{% set version = "2.3.1" %}
+{% set sha256 = "72ac9b6bd2c6b76c9c512494824d3d741bc314abbf2ae9b91d128ba81fdffd11" %}
 
 package:
   name: {{ name|lower }}
@@ -10,22 +10,22 @@ source:
   fn: {{ name }}-{{ version }}.tar.gz
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: {{ sha256 }}
-  patches:
-    - tesseract4beta.patch  # Workaround for bug in tesseract 4 beta. Has been fixed in tesseract master.
-    - tesseract4beta2.patch  # Upstream commit from tesserocr master.
 
 build:
-  number: 1
+  number: 0
+  script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv"
 
 requirements:
   build:
-    - python
-    - setuptools
+    - {{ compiler('cxx') }}
+  host:
     - cython
-    - tesseract 4.*
+    - python
+    - pip
+    - tesseract
   run:
     - python
-    - tesseract 4.*
+    - tesseract
 
 test:
   imports:
@@ -33,8 +33,13 @@ test:
 
 about:
   home: https://github.com/sirfz/tesserocr
-  summary: "A simple, Pillow-friendly, Python wrapper around tesseract-ocr API using Cython"
   license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: 'A simple, Pillow-friendly, Python wrapper around tesseract-ocr API using Cython'
+  doc_url: https://github.com/sirfz/tesserocr
+  dev_url: https://github.com/sirfz/tesserocr
+
 
 extra:
   recipe-maintainers:
