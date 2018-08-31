@@ -1,6 +1,13 @@
 #!/usr/bin/env bash
-export CFLAGS="-g -O2 -I$PREFIX/include"
-export LDFLAGS="-Wl,-rpath,$PREFIX/lib -Wl,-L$PREFIX/lib"
-./configure --prefix=$PREFIX --with-libpng --with-jpeg --with-libtiff
-make
+
+# This is a temporary hack until all dependencies filter their .la files
+find $PREFIX -name '*.la' -delete
+
+./autobuild
+./configure --prefix=$PREFIX
+make -j$CPU_COUNT
 make install
+
+# Filter .la files: See https://github.com/conda-forge/conda-forge.github.io/issues/621
+# Also: https://github.com/conda/conda-build/pull/3102
+find $PREFIX -name '*.la' -delete
