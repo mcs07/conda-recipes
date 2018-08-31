@@ -1,3 +1,4 @@
+cd tesseract
 mkdir build
 cd build
 
@@ -17,13 +18,14 @@ cmake --build . --config Release --target install
 if errorlevel 1 exit 1
 
 :: Make copies of the .lib file without the embedded version number
-copy %LIBRARY_LIB%\tesseract400.lib %LIBRARY_LIB%\tesseract.lib
+copy %LIBRARY_LIB%\tesseract305.lib %LIBRARY_LIB%\tesseract.lib
 
-:: Download tessdata to bin directory so tesseract executable works
+:: Copy tessdata to bin directory so tesseract executable works
+cd ..\..\tessdata
 mkdir %LIBRARY_BIN%\tessdata
-cd %LIBRARY_BIN%\tessdata
-curl -L -O "https://github.com/tesseract-ocr/tessdata_fast/raw/4.0.0-beta.1/eng.traineddata"
-curl -L -O "https://github.com/tesseract-ocr/tessdata_fast/raw/4.0.0-beta.1/osd.traineddata"
+copy eng.traineddata %PREFIX%\tessdata\
+copy osd.traineddata %PREFIX%\tessdata\
+copy equ.traineddata %PREFIX%\tessdata\
 
 :: Copy tessdata to build prefix so tesseract API works
 mkdir %PREFIX%\tessdata
