@@ -2,6 +2,9 @@ cd tesseract
 mkdir build
 cd build
 
+:: Remove -GL from CXXFLAGS as this causes a fatal error
+set "CXXFLAGS= -MD"
+
 cmake -G "%CMAKE_GENERATOR%" ^
       -D CMAKE_BUILD_TYPE=Release ^
       -D CMAKE_PREFIX_PATH=%LIBRARY_PREFIX% ^
@@ -21,11 +24,10 @@ if errorlevel 1 exit 1
 copy %LIBRARY_LIB%\tesseract305.lib %LIBRARY_LIB%\tesseract.lib
 
 :: Copy tessdata to bin directory so tesseract executable works
-cd ..\..\tessdata
 mkdir %LIBRARY_BIN%\tessdata
-copy eng.traineddata %PREFIX%\tessdata\
-copy osd.traineddata %PREFIX%\tessdata\
-copy equ.traineddata %PREFIX%\tessdata\
+copy ..\..\tessdata\eng.traineddata %LIBRARY_BIN%\tessdata\
+copy ..\..\tessdata\osd.traineddata %LIBRARY_BIN%\tessdata\
+copy ..\..\tessdata\equ.traineddata %LIBRARY_BIN%\tessdata\
 
 :: Copy tessdata to build prefix so tesseract API works
 mkdir %PREFIX%\tessdata
