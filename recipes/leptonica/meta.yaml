@@ -15,7 +15,7 @@ source:
     - optimize.patch  # [win and py27]
 
 build:
-  number: 0
+  number: 1
   run_exports:
     - {{ pin_subpackage("leptonica", max_pin="x.x") }}
 
@@ -36,6 +36,7 @@ requirements:
     - libtiff
     - libwebp
     - openjpeg
+    - xz
     - zlib
   run:
     - giflib  # [not win]
@@ -44,6 +45,7 @@ requirements:
     - libtiff
     - libwebp
     - openjpeg
+    - xz
     - zlib
 
 test:
