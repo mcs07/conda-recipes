@@ -11,8 +11,6 @@ source:
     sha256: {{ sha256 }}
     folder: tesseract
     patches:
-      - cmake.patch  # [win and vc<14]
-      - makerow_int32.patch  # [win and vc<14]
       # Install gettimeofday.h header to include directory
       - gettimeofday.patch  # [win]
       # Rename timezone struct to avoid name clash
@@ -23,6 +21,7 @@ source:
 
 build:
   number: 0
+  skip: True  # [win and vc<14]
 
 requirements:
   build:
@@ -42,7 +41,6 @@ requirements:
     - openjpeg
     - xz  # [not win]
     - zlib
-    - msinttypes  # [win and vc<14]
   run:
     - giflib  # [not win]
     - jpeg
@@ -53,7 +51,6 @@ requirements:
     - openjpeg
     - xz  # [not win]
     - zlib
-    - msinttypes  # [win and vc<14]
 
 test:
   commands:
