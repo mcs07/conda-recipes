@@ -1,6 +1,6 @@
 {% set name = "leptonica" %}
-{% set version = "1.74.4" %}
-{% set sha256 = "29c35426a416bf454413c6fec24c24a0b633e26144a17e98351b6dffaa4a833b" %}
+{% set version = "1.76.0" %}
+{% set sha256 = "5e9a33b7ce33ab39fb03cee5a7ec353b044670176303265d7c64d51539616857" %}
 
 package:
   name: {{ name|lower }}
@@ -15,34 +15,36 @@ source:
     - optimize.patch  # [win and py27]
 
 build:
-  number: 4
-  skip: True  # [win and py>35]
-  features:
-    - vc9  # [win and py27]
-    - vc10  # [win and py34]
-    - vc14  # [win and py>=35]
+  number: 0
+  run_exports:
+    - {{ pin_subpackage("leptonica", max_pin="x.x") }}
+
+# TODO: conda-forge giflib missing headers on windows?
+# TODO: openjpeg not found correctly on windows?
 
 requirements:
   build:
+    - {{ compiler('c') }}
     - automake  # [not win]
     - libtool  # [not win]
     - pkg-config  # [not win]
     - cmake  # [win]
+  host:
+    - giflib  # [not win]
     - jpeg
     - libpng
     - libtiff
+    - libwebp
+    - openjpeg
     - zlib
-    - vc 9  # [win and py27]
-    - vc 10  # [win and py34]
-    - vc 14  # [win and py>=35]
   run:
+    - giflib  # [not win]
     - jpeg
     - libpng
     - libtiff
+    - libwebp
+    - openjpeg
     - zlib
-    - vc 9  # [win and py27]
-    - vc 10  # [win and py34]
-    - vc 14  # [win and py>=35]
 
 test:
   commands:
@@ -50,8 +52,12 @@ test:
 
 about:
   home: https://github.com/DanBloomberg/leptonica
-  license: FreeBSD 2-clause license
+  license: BSD 2-Clause
+  license_family: BSD
+  license_file: leptonica-license.txt
   summary: Leptonica image processing library
+  doc_url: http://www.leptonica.org/
+  dev_url: https://github.com/DanBloomberg/leptonica
 
 extra:
   recipe-maintainers:

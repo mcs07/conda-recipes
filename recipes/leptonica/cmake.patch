@@ -1,5 +1,5 @@
 diff --git a/cmake/templates/LeptonicaConfig.cmake.in b/cmake/templates/LeptonicaConfig.cmake.in
-index d53904a..856fd3a 100644
+index 4f7527a..2061041 100644
 --- a/cmake/templates/LeptonicaConfig.cmake.in
 +++ b/cmake/templates/LeptonicaConfig.cmake.in
 @@ -20,7 +20,9 @@
@@ -17,7 +17,7 @@ index d53904a..856fd3a 100644
  # ======================================================
  
  # Provide the include directories to the caller
--set(Leptonica_INCLUDE_DIRS @INCLUDE_DIR@)
+-set(Leptonica_INCLUDE_DIRS "@INCLUDE_DIR@")
 +set(Leptonica_INCLUDE_DIRS "${_leptonica_install_prefix}/include/leptonica/")
  
  # ====================================================================
@@ -26,42 +26,3 @@ index d53904a..856fd3a 100644
  
 -set(Leptonica_LIBRARIES leptonica)
 +set(Leptonica_LIBRARIES "${_leptonica_install_prefix}/lib/leptonica-@VERSION_PLAIN@.lib")
-diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
-index 8806540..e9e5027 100644
---- a/src/CMakeLists.txt
-+++ b/src/CMakeLists.txt
-@@ -30,21 +30,25 @@ if (GIF_LIBRARY)
-     target_link_libraries       (leptonica ${GIF_LIBRARY})
- endif()
- if (JPEG_LIBRARY)
-+    include_directories         (${JPEG_INCLUDE_DIR})
-     target_link_libraries       (leptonica ${JPEG_LIBRARY})
- endif()
- if (JP2K_FOUND)
-     target_link_libraries       (leptonica ${JP2K_LIBRARIES})
- endif()
- if (PNG_LIBRARY)
-+    include_directories         (${PNG_PNG_INCLUDE_DIR})
-     target_link_libraries       (leptonica ${PNG_LIBRARY})
- endif()
- if (TIFF_LIBRARY)
-+    include_directories         (${TIFF_INCLUDE_DIR})
-     target_link_libraries       (leptonica ${TIFF_LIBRARY})
- endif()
- if (WEBP_FOUND)
-     target_link_libraries       (leptonica ${WEBP_LIBRARIES})
- endif()
- if (ZLIB_LIBRARY)
-+    include_directories         (${ZLIB_INCLUDE_DIR})
-     target_link_libraries       (leptonica ${ZLIB_LIBRARY})
- endif()
- 
-@@ -53,7 +57,7 @@ if (UNIX)
- endif()
- 
- if (NOT CPPAN_BUILD)
--    export(TARGETS leptonica FILE ${CMAKE_BINARY_DIR}/LeptonicaTargets.cmake)
-+    #export(TARGETS leptonica FILE ${CMAKE_BINARY_DIR}/LeptonicaTargets.cmake)
- else()
-     target_link_libraries       (leptonica
-         pvt.cppan.demo.gif
