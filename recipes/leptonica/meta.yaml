@@ -1,6 +1,6 @@
 {% set name = "leptonica" %}
-{% set version = "1.76.0" %}
-{% set sha256 = "5e9a33b7ce33ab39fb03cee5a7ec353b044670176303265d7c64d51539616857" %}
+{% set version = "1.77.0" %}
+{% set sha256 = "161d0b368091986b6c60990edf257460bdc7da8dd18d48d4179e297bcdca5eb7" %}
 
 package:
   name: {{ name|lower }}
@@ -12,15 +12,14 @@ source:
   sha256: {{ sha256 }}
   patches:
     - cmake.patch  # [win]
-    - optimize.patch  # [win and py27]
 
 build:
-  number: 2
+  number: 0
+  skip: True  # [win and vc<14]
   run_exports:
     - {{ pin_subpackage("leptonica", max_pin="x.x") }}
 
 # TODO: conda-forge giflib missing headers on windows?
-# TODO: openjpeg not found correctly on windows?
 
 requirements:
   build:
