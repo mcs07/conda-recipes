@@ -31,7 +31,7 @@ def build_all(recipes_dir, arch):
 
     print("Building {} with conda-forge/label/main".format(','.join(folders)))
     channel_urls = ['local', 'mcs07', 'conda-forge', 'defaults']
-    build_folders(recipes_dir, new_comp_folders, arch, channel_urls)
+    build_folders(recipes_dir, folders, arch, channel_urls)
 
 
 def get_config(arch, channel_urls):
