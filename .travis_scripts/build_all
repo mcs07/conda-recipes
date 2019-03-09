@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
-
-# Set the numpy variable. This isn't used, but conda-build complains if we haven't set it already.
-export CONDA_NPY=19
+set -x
 
 # Remove homebrew.
 echo ""
@@ -24,10 +22,8 @@ echo "Configuring conda."
 conda config --add channels conda-forge
 conda config --add channels mcs07
 conda config --set show_channel_urls true
-conda install --yes --quiet conda-forge-ci-setup=1.* conda-forge-pinning networkx anaconda-client
+conda install --yes --quiet conda conda-forge-ci-setup=2.* conda-forge-pinning networkx conda-build>=3.16
 source run_conda_forge_build_setup
-conda info
-conda config --get
 
 # We just want to build all of the recipes.
 python .ci_support/build_all.py ./recipes

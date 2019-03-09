@@ -7,6 +7,11 @@ import os
 from collections import OrderedDict
 import sys
 
+try:
+    from ruamel_yaml import safe_load, safe_dump
+except ImportError:
+    from yaml import safe_load, safe_dump
+
 
 def get_host_platform():
     from sys import platform
@@ -23,18 +28,13 @@ def build_all(recipes_dir, arch):
     if not folders:
         print("Found no recipes to build")
         return
+
+    print("Building {} with conda-forge/label/main".format(','.join(folders)))
     channel_urls = ['local', 'mcs07', 'conda-forge', 'defaults']
+    build_folders(recipes_dir, new_comp_folders, arch, channel_urls)
 
-    # ensure that noarch path exists and is indexed for newer conda (4.4+)
-    noarch_path = os.path.join(sys.exec_prefix, 'conda-bld', 'noarch')
-    try:
-        os.makedirs(noarch_path)
-    except:
-        pass
-    conda_build.api.update_index(noarch_path)
-    index = conda_build.conda_interface.get_index(channel_urls=channel_urls)
-    conda_resolve = conda_build.conda_interface.Resolve(index)
 
+def get_config(arch, channel_urls):
     exclusive_config_file = os.path.join(conda_build.conda_interface.root_dir,
                                          'conda_build_config.yaml')
     platform = get_host_platform()
@@ -49,6 +49,18 @@ def build_all(recipes_dir, arch):
         variant_config_files=variant_config_files, arch=arch,
         exclusive_config_file=exclusive_config_file, channel_urls=channel_urls,
         token=os.environ.get('BINSTAR_TOKEN'), user='mcs07', skip_existing=True)
+    return config
+
+def build_folders(recipes_dir, folders, arch, channel_urls):
+
+    index_path = os.path.join(sys.exec_prefix, 'conda-bld')
+    os.makedirs(index_path, exist_ok=True)
+    conda_build.api.update_index(index_path)
+    index = conda_build.conda_interface.get_index(channel_urls=channel_urls)
+    conda_resolve = conda_build.conda_interface.Resolve(index)
+
+    config = get_config(arch, channel_urls)
+    platform = get_host_platform()
 
     worker = {'platform': platform, 'arch': arch,
               'label': '{}-{}'.format(platform, arch)}
@@ -71,7 +83,7 @@ def build_all(recipes_dir, arch):
     for node in order:
         d[G.node[node]['meta'].meta_path] = 1
 
-    conda_build.api.build(list(d.keys()), config=config)
+    conda_build.api.build(list(d.keys()), config=get_config(arch, channel_urls))
 
 
 if __name__ == "__main__":
