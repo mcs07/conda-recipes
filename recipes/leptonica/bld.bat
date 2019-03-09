@@ -18,5 +18,5 @@ cmake --build . --config Release --target install
 if errorlevel 1 exit 1
 
 :: Make copies of the .lib file without the embedded version number
-copy %LIBRARY_LIB%\leptonica-1.76.0.lib %LIBRARY_LIB%\leptonica.lib
-copy %LIBRARY_LIB%\leptonica-1.76.0.lib %LIBRARY_LIB%\lept.lib
+copy %LIBRARY_LIB%\leptonica-*.lib %LIBRARY_LIB%\leptonica.lib
+copy %LIBRARY_LIB%\leptonica-*.lib %LIBRARY_LIB%\lept.lib
