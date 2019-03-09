@@ -1,25 +1,23 @@
 {% set name = "PubChemPy" %}
 {% set version = "1.0.4" %}
-{% set sha256 = "24e9dc2fc90ab153b2764bf805e510b1410700884faf0510a9e7cf0d61d8ed0e" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  fn: {{ name }}-{{ version }}.tar.gz
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: {{ sha256 }}
+  sha256: 24e9dc2fc90ab153b2764bf805e510b1410700884faf0510a9e7cf0d61d8ed0e
 
 build:
   noarch: python
-  number: 2
-  script: python setup.py install --single-version-externally-managed --record=record.txt
+  number: 3
+  script: "{{ PYTHON }} -m pip install . --no-deps -vv"
 
 requirements:
-  build:
+  host:
     - python
-    - setuptools
+    - pip
   run:
     - python
 
@@ -30,8 +28,9 @@ test:
 about:
   home: https://github.com/mcs07/PubChemPy
   license: MIT
+  license_family: MIT
   license_file: LICENSE
-  summary: 'A simple Python wrapper around the PubChem PUG REST API.'
+  summary: 'A simple Python wrapper around the PubChem PUG REST API'
   doc_url: http://pubchempy.readthedocs.io/
   dev_url: https://github.com/mcs07/PubChemPy
 
