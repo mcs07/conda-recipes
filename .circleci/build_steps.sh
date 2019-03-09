@@ -19,4 +19,4 @@ find /home/conda/conda-recipes/recipes -mindepth 2 -maxdepth 2 -type f -name "yu
     | xargs -n1 cat | { grep -v -e "^#" -e "^$" || test $? == 1; } | \
     xargs -r /usr/bin/sudo -n yum install -y
 
-python /home/conda/conda-recipes/.ci_support/build_all.py /home/conda-recipes/recipes
+python /home/conda/conda-recipes/.ci_support/build_all.py /home/conda/conda-recipes/recipes
