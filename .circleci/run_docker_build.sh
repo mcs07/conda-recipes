@@ -18,6 +18,7 @@ fi
 docker run -it \
            -v ${REPO_ROOT}:/home/conda/conda-recipes \
            -e HOST_USER_ID=${HOST_USER_ID} \
+           -e BINSTAR_TOKEN \
            $IMAGE_NAME \
            bash \
            /home/conda/conda-recipes/.circleci/build_steps.sh
