@@ -10,18 +10,13 @@ source:
   - url: https://github.com/tesseract-ocr/{{ name }}/archive/{{ version }}.tar.gz
     sha256: {{ sha256 }}
     folder: tesseract
-    patches:
-      # Install gettimeofday.h header to include directory
-      - gettimeofday.patch  # [win]
-      # Rename timezone struct to avoid name clash
-      - timezone.patch  # [win]
   - url: https://github.com/tesseract-ocr/tessdata_fast/archive/4.0.0.tar.gz
     sha256: f1b71e97f27bafffb6a730ee66fd9dc021afc38f318fdc80a464a84a519227fe
     folder: tessdata_fast
 
 build:
   number: 0
-  skip: True  # [win]
+  skip: True  # [win and vc<14]
 
 requirements:
   build:
