@@ -1,13 +1,13 @@
 {% set name = "tesseract" %}
-{% set version = "4.0.0" %}
-{% set sha256 = "a1f5422ca49a32e5f35c54dee5112b11b99928fc9f4ee6695cdc6768d69f61dd" %}
+{% set version = "4.1.0rc1" %}
+{% set sha256 = "d9795aab66fa2ef9134e1b50ea3c6c0849efc7fa08217e0161cfed5ac70fae1f" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  - url: https://github.com/tesseract-ocr/{{ name }}/archive/{{ version }}.tar.gz
+  - url: https://github.com/tesseract-ocr/{{ name }}/archive/4.1.0-rc1.tar.gz
     sha256: {{ sha256 }}
     folder: tesseract
   - url: https://github.com/tesseract-ocr/tessdata_fast/archive/4.0.0.tar.gz
