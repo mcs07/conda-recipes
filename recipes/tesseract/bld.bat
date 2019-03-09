@@ -21,13 +21,12 @@ cmake --build . --config Release --target install
 if errorlevel 1 exit 1
 
 :: Make copies of the .lib file without the embedded version number
-copy %LIBRARY_LIB%\tesseract305.lib %LIBRARY_LIB%\tesseract.lib
+copy %LIBRARY_LIB%\tesseract400.lib %LIBRARY_LIB%\tesseract.lib
 
 :: Copy tessdata to bin directory so tesseract executable works
 mkdir %LIBRARY_BIN%\tessdata
-copy ..\..\tessdata\eng.traineddata %LIBRARY_BIN%\tessdata\
-copy ..\..\tessdata\osd.traineddata %LIBRARY_BIN%\tessdata\
-copy ..\..\tessdata\equ.traineddata %LIBRARY_BIN%\tessdata\
+copy ..\..\tessdata_fast\eng.traineddata %LIBRARY_BIN%\tessdata\
+copy ..\..\tessdata_fast\osd.traineddata %LIBRARY_BIN%\tessdata\
 
 :: Copy tessdata to build prefix so tesseract API works
 mkdir %PREFIX%\tessdata

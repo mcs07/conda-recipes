@@ -3,12 +3,13 @@
 pushd tesseract
 
 autoreconf -fi
-LIBLEPT_HEADERSDIR=$PREFIX/include ./configure --prefix=$PREFIX --with-extra-libraries=$PREFIX/lib
-LDFLAGS="-L$PREFIX/lib" CFLAGS="-I$PREFIX/include" make -j $CPU_COUNT
+./autogen.sh
+mkdir build && cd build
+../configure --prefix="${PREFIX}"
+make -j $CPU_COUNT
 make install
 popd
 
-pushd tessdata
+pushd tessdata_fast
 cp -avf eng.traineddata $PREFIX/share/tessdata
 cp -avf osd.traineddata $PREFIX/share/tessdata
-cp -avf equ.traineddata $PREFIX/share/tessdata

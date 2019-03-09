@@ -1,6 +1,6 @@
 {% set name = "tesseract" %}
-{% set version = "3.05.02" %}
-{% set sha256 = "494d64ffa7069498a97b909a0e65a35a213989e0184f1ea15332933a90d43445" %}
+{% set version = "4.0.0" %}
+{% set sha256 = "a1f5422ca49a32e5f35c54dee5112b11b99928fc9f4ee6695cdc6768d69f61dd" %}
 
 package:
   name: {{ name|lower }}
@@ -15,9 +15,9 @@ source:
       - gettimeofday.patch  # [win]
       # Rename timezone struct to avoid name clash
       - timezone.patch  # [win]
-  - url: https://github.com/tesseract-ocr/tessdata/archive/3.04.00.tar.gz
-    sha256: 5dcb37198336b6953843b461ee535df1401b41008d550fc9e43d0edabca7adb1
-    folder: tessdata
+  - url: https://github.com/tesseract-ocr/tessdata_fast/archive/4.0.0.tar.gz
+    sha256: f1b71e97f27bafffb6a730ee66fd9dc021afc38f318fdc80a464a84a519227fe
+    folder: tessdata_fast
 
 build:
   number: 0
@@ -25,6 +25,7 @@ build:
 
 requirements:
   build:
+    - {{ compiler('c') }}
     - {{ compiler('cxx') }}
     - autoconf  # [not win]
     - automake  # [not win]
@@ -65,3 +66,6 @@ about:
   doc_url: https://github.com/tesseract-ocr/tesseract
   dev_url: https://github.com/tesseract-ocr/tesseract
 
+extra:
+  recipe-maintainers:
+    - mcs07
