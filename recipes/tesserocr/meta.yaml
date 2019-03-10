@@ -1,6 +1,5 @@
 {% set name = "tesserocr" %}
-{% set version = "2.3.1" %}
-{% set sha256 = "72ac9b6bd2c6b76c9c512494824d3d741bc314abbf2ae9b91d128ba81fdffd11" %}
+{% set version = "2.4.0" %}
 
 package:
   name: {{ name|lower }}
@@ -9,28 +8,26 @@ package:
 source:
   fn: {{ name }}-{{ version }}.tar.gz
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: {{ sha256 }}
+  sha256: ba60466fc91835656d4b4f93deb4ba7543d1588722ec4e0b84cc694500373b85
 
 build:
   number: 0
-  skip: True  # [win]
-  script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv"
+  skip: True  # [win and vc<14]
+  script: "{{ PYTHON }} -m pip install . --no-deps -vv"
 
 requirements:
   build:
     - {{ compiler('cxx') }}
   host:
     - cython
+    - leptonica
     - python
     - pip
     - tesseract
   run:
+    - leptonica
     - python
     - tesseract
-
-test:
-  imports:
-    - tesserocr
 
 about:
   home: https://github.com/sirfz/tesserocr
