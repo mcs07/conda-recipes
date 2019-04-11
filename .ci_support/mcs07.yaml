@@ -1,0 +1,5 @@
+tesseract:
+  - 3.05.2
+  - 4.1.0rc1
+pin_run_as_build:
+  tesseract: x

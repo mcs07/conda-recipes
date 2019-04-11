@@ -11,7 +11,7 @@ source:
   sha256: ba60466fc91835656d4b4f93deb4ba7543d1588722ec4e0b84cc694500373b85
 
 build:
-  number: 1
+  number: 2
   skip: True  # [win and vc<14]
   script: "{{ PYTHON }} -m pip install . --no-deps -vv"
 
@@ -23,9 +23,10 @@ requirements:
     - leptonica
     - python
     - pip
-    - tesseract 4.*
+    - tesseract {{ tesseract }}
   run:
     - python
+    - tesseract {{ tesseract }}
 
 about:
   home: https://github.com/sirfz/tesserocr

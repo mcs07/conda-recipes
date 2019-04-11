@@ -39,7 +39,7 @@ def get_config(arch, channel_urls):
                                          'conda_build_config.yaml')
     platform = get_host_platform()
     script_dir = os.path.dirname(os.path.realpath(__file__))
-    variant_config_files = []
+    variant_config_files = [os.path.join(script_dir, 'mcs07.yaml')]
     variant_config_file = os.path.join(script_dir, '{}{}.yaml'.format(
         platform, arch))
     if os.path.exists(variant_config_file):
