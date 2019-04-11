@@ -1,0 +1,71 @@
+{% set name = "tesseract" %}
+{% set version = "3.05.02" %}
+{% set sha256 = "494d64ffa7069498a97b909a0e65a35a213989e0184f1ea15332933a90d43445" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  - url: https://github.com/tesseract-ocr/{{ name }}/archive/{{ version }}.tar.gz
+    sha256: {{ sha256 }}
+    folder: tesseract
+    patches:
+      # Install gettimeofday.h header to include directory
+      - gettimeofday.patch  # [win]
+      # Rename timezone struct to avoid name clash
+      - timezone.patch  # [win]
+  - url: https://github.com/tesseract-ocr/tessdata/archive/3.04.00.tar.gz
+    sha256: 5dcb37198336b6953843b461ee535df1401b41008d550fc9e43d0edabca7adb1
+    folder: tessdata
+
+build:
+  number: 0
+  skip: True  # [win and vc<14]
+
+requirements:
+  build:
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+    - autoconf  # [not win]
+    - automake  # [not win]
+    - libtool  # [not win]
+    - pkg-config  # [not win]
+    - cmake  # [win]
+  host:
+    - giflib  # [not win]
+    - jpeg
+    - leptonica
+    - libpng
+    - libtiff
+    - libwebp
+    - openjpeg
+    - xz  # [not win]
+    - zlib
+  run:
+    - giflib  # [not win]
+    - jpeg
+    - leptonica
+    - libpng
+    - libtiff
+    - libwebp
+    - openjpeg
+    - xz  # [not win]
+    - zlib
+
+test:
+  commands:
+    - tesseract --help
+
+about:
+  home: https://github.com/tesseract-ocr/tesseract
+  license: Apache-2.0
+  license_family: Apache
+  license_file: tesseract/LICENSE
+  summary: Open Source OCR Engine
+  doc_url: https://github.com/tesseract-ocr/tesseract
+  dev_url: https://github.com/tesseract-ocr/tesseract
+
+extra:
+  recipe-maintainers:
+    - mcs07

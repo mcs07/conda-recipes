@@ -1,0 +1,13 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 25ded3c..f3146e9 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -303,6 +303,8 @@ install(FILES
+     ccutil/unicharmap.h 
+     ccutil/unicharset.h
+ 
++    vs2010/port/gettimeofday.h
++
+     #${CMAKE_BINARY_DIR}/src/endianness.h
+     DESTINATION include/tesseract)
+ 
