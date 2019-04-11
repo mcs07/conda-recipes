@@ -14,10 +14,10 @@ source:
     - cmake.patch  # [win]
 
 build:
-  number: 0
+  number: 1
   skip: True  # [win and vc<14]
   run_exports:
-    - {{ pin_subpackage("leptonica", max_pin="x.x") }}
+    - {{ pin_subpackage(name, max_pin='x.x') }}
 
 # TODO: conda-forge giflib missing headers on windows?
 
@@ -40,14 +40,8 @@ requirements:
     - xz
     - zlib
   run:
-    - giflib  # [not win]
-    - jpeg
-    - libpng
-    - libtiff
+    # libwebp doesn't have run_exports yet (on version in conda-forge-pinning)
     - libwebp
-    - openjpeg
-    - xz
-    - zlib
 
 test:
   commands:
