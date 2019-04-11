@@ -11,7 +11,7 @@ source:
   sha256: ba60466fc91835656d4b4f93deb4ba7543d1588722ec4e0b84cc694500373b85
 
 build:
-  number: 0
+  number: 1
   skip: True  # [win and vc<14]
   script: "{{ PYTHON }} -m pip install . --no-deps -vv"
 
@@ -25,9 +25,7 @@ requirements:
     - pip
     - tesseract 3.*
   run:
-    - leptonica
     - python
-    - tesseract 3.*
 
 test:
   imports:
