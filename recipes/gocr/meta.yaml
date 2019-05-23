@@ -1,0 +1,35 @@
+{% set name = "gocr" %}
+{% set version = "0.52" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  url: http://www-e.uni-magdeburg.de/jschulen/ocr/gocr-{{ version }}.tar.gz
+  sha256: df906463105f5f4273becc2404570f187d4ea52bd5769d33a7a8661a747b8686
+  patches:
+    - makefile.patch
+
+build:
+  number: 0
+  skip: True  # [win]
+
+requirements:
+  build:
+    - {{ compiler('c') }}
+
+test:
+  commands:
+    - gocr --help
+
+about:
+  home: http://jocr.sourceforge.net
+  license: GPL-2.0
+  license_family: GPL
+  license_file: gpl.html
+  summary: 'Open-source character recognition'
+
+extra:
+  recipe-maintainers:
+    - mcs07
