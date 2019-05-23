@@ -10,12 +10,13 @@ source:
   sha256: a9bfe67e9a040907aff5640dca56392476b6a89e48e37dc94ba846c5b6733b36
 
 build:
-  number: 0
+  number: 1
   skip: True  # [win]
 
 requirements:
   build:
     - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
     - lzip
 
 test:
