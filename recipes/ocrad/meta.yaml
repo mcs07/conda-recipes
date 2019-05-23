@@ -1,0 +1,35 @@
+{% set name = "ocrad" %}
+{% set version = "0.27" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  url: http://ftpmirror.gnu.org/ocrad/ocrad-{{ version }}.tar.lz
+  sha256: a9bfe67e9a040907aff5640dca56392476b6a89e48e37dc94ba846c5b6733b36
+
+build:
+  number: 0
+  skip: True  # [win]
+
+requirements:
+  build:
+    - {{ compiler('c') }}
+    - lzip
+
+test:
+  commands:
+    - ocrad --help
+
+about:
+  home: https://www.gnu.org/software/ocrad/
+  license: GPL-2.0
+  license_family: GPL
+  license_file: COPYING
+  summary: 'Optical Character Recognition program based on a feature extraction method.'
+  doc_url: https://www.gnu.org/software/ocrad/manual/ocrad_manual.html
+
+extra:
+  recipe-maintainers:
+    - mcs07
