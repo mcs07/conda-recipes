@@ -1,0 +1,37 @@
+{% set name = "potrace" %}
+{% set version = "1.15" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  url: http://potrace.sourceforge.net/download/{{ version }}/potrace-{{ version }}.tar.gz
+  sha256: a9b33904ace328340c850a01458199e0064e03ccaaa731bc869a842b1b8d529d
+
+build:
+  number: 0
+  skip: True  # [win]
+
+requirements:
+  build:
+    - {{ compiler('c') }}
+  host:
+    - zlib
+  run:
+    - zlib
+
+test:
+  commands:
+    - potrace --help
+
+about:
+  home: http://potrace.sourceforge.net
+  license: GPL-2.0
+  license_family: GPL
+  license_file: COPYING
+  summary: 'Transforming bitmaps into vector graphics'
+
+extra:
+  recipe-maintainers:
+    - mcs07
