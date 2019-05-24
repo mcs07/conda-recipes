@@ -7,6 +7,9 @@
     --with-openbabel-lib=$PREFIX/lib \
     --with-graphicsmagick-include=$PREFIX/include \
     --with-graphicsmagick-lib=$PREFIX/lib \
+    --with-tesseract \
+    --with-tesseract-include=$PREFIX/include/tesseract \
+    --with-tesseract-lib=$PREFIX/lib \
     CXXFLAGS="$CXXFLAGS -Wno-c++11-narrowing"
 make
 make install

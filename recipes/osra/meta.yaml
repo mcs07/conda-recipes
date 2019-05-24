@@ -10,7 +10,7 @@ source:
   sha256: d32d38cfdfb70c153b0debe6ea69730c535a422d6a32fbe84508a464b979c138
 
 build:
-  number: 0
+  number: 1
   skip: True  # [win]
 
 requirements:
@@ -24,6 +24,7 @@ requirements:
     - poppler
     - potrace
     - tclap
+    - tesseract 3
   run:
     - gocr
     - graphicsmagick
@@ -31,6 +32,7 @@ requirements:
     - openbabel
     - poppler
     - potrace
+    - tesseract 3
 
 
 test:
