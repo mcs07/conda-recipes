@@ -1,5 +1,5 @@
 diff --git a/src/Makefile.in b/src/Makefile.in
-index bf4181f..97049ce 100644
+index bf4181f..d32f414 100644
 --- a/src/Makefile.in
 +++ b/src/Makefile.in
 @@ -10,7 +10,7 @@ PROGRAM = gocr$(EXEEXT)
@@ -31,7 +31,7 @@ index bf4181f..97049ce 100644
  
  #lib$(PGMASCLIB).@PACKAGE_VERSION@.so: $(LIBOBJS)
  #	$(CC) -fPIC -shared -Wl,-h$@ -o $@ $(LIBOBJS)
-@@ -109,17 +109,14 @@ $(LIBOBJS): Makefile
+@@ -109,17 +109,15 @@ $(LIBOBJS): Makefile
  # PHONY = don't look at file clean, -rm = start rm and ignore errors
  .PHONY : clean proper install uninstall
  install: all
@@ -48,6 +48,7 @@ index bf4181f..97049ce 100644
  	# ToDo: not sure that the link will be installed correctly
 -	#$(INSTALL) $(INCLUDEFILES) $(DESTDIR)$(includedir)
 +	$(INSTALL) $(INCLUDEFILES) $(DESTDIR)$(includedir)
++	$(INSTALL) ../include/config.h $(DESTDIR)$(includedir)
  
  # directories are not removed
  uninstall:
