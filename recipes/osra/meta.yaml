@@ -23,6 +23,7 @@ requirements:
     - openbabel
     - poppler
     - potrace
+    - tclap
   run:
     - gocr
     - graphicsmagick
