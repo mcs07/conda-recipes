@@ -1,0 +1,40 @@
+{% set name = "molhash" %}
+{% set version = "1.0" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  git_url: https://github.com/nextmovesoftware/molhash.git
+  git_rev: 4ddf1a0954b64160c2397cdba28495bbae1ea849
+
+build:
+  number: 0
+  skip: true  # [win]
+
+requirements:
+  build:
+    - {{ compiler('cxx') }}
+    - cmake
+  host:
+    - rdkit
+  run:
+    - rdkit
+
+test:
+  commands:
+    - echo "c1ccccc1C(=O)Cl" | molhash -mf -
+
+about:
+  home: https://github.com/nextmovesoftware/molhash
+  license: BSD-3-Clause
+  license_family: BSD
+  license_file: license.txt
+  summary: 'Library and command-line application for generating hashes from molecular structures'
+  doc_url: https://nextmovesoftware.github.io/molhash
+  dev_url: https://github.com/nextmovesoftware/molhash
+
+extra:
+  recipe-maintainers:
+    - mcs07
