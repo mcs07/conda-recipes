@@ -19,14 +19,14 @@ show_channel_urls: true
 CONDARC
 
 # Copy the host recipes folder so we don't ever muck with it
-cp -r /home/conda/conda-recipes/recipes ~/conda-recipes
+cp -r /home/conda/conda-recipes/recipes ~/recipes
 cp -r /home/conda/conda-recipes/.ci_support ~/.ci_support
 
 # Unused, but needed by conda-build currently... :(
 export CONDA_NPY='19'
 
 # Make sure build_artifacts is a valid channel
-conda index /home/conda/staged-recipes/build_artifacts
+conda index /home/conda/conda-recipes/build_artifacts
 
 conda install --yes --quiet "conda!=4.6.1,<4.7.11a0" conda-forge-ci-setup=2.* conda-forge-pinning networkx "conda-build>=3.16"
 source run_conda_forge_build_setup
@@ -36,6 +36,6 @@ find ~/conda-recipes -mindepth 2 -maxdepth 2 -type f -name "yum_requirements.txt
     | xargs -n1 cat | { grep -v -e "^#" -e "^$" || test $? == 1; } | \
     xargs -r /usr/bin/sudo -n yum install -y
 
-python ~/.ci_support/build_all.py ~/conda-recipes
+python ~/.ci_support/build_all.py ~/recipes
 
-touch "/home/conda/staged-recipes/build_artifacts/conda-forge-build-done"
+touch "/home/conda/conda-recipes/build_artifacts/conda-forge-build-done"
