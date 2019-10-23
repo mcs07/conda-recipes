@@ -131,7 +131,7 @@ diff -crB --new-file SConstruct SConstruct
 +        'TARGET_EXE_STANDALONE=1'
 +    ])
 +else:
-+    env2.Replace(CCFLAGS='', CFLAGS='-ansi -O3')
++    env2.Replace(CCFLAGS='', CFLAGS='-ansi -O3', LIBS=['m'])
 +    env2.Append(CPPDEFINES=['TARGET_EXE_STANDALONE', 'COMPILE_ANSI_ONLY'])
 +env2.Replace(CPPPATH=['INCHI_BASE/src', 'INCHI_EXE/inchi-1/src'])
 +exe_srcs = Glob('INCHI_BASE/src/*.c')
