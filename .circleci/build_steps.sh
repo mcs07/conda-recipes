@@ -9,13 +9,17 @@ set -xeuo pipefail
 export PYTHONUNBUFFERED=1
 
 cat >~/.condarc <<CONDARC
+
 channels:
  - mcs07
  - conda-forge
  - defaults
+
 conda-build:
  root-dir: /home/conda/conda-recipes/build_artifacts
+
 show_channel_urls: true
+
 CONDARC
 
 # Copy the host recipes folder so we don't ever muck with it
@@ -28,7 +32,10 @@ export CONDA_NPY='19'
 # Make sure build_artifacts is a valid channel
 conda index /home/conda/conda-recipes/build_artifacts
 
-conda install --yes --quiet "conda!=4.6.1,<4.7.11a0" conda-forge-ci-setup=2.* conda-forge-pinning networkx "conda-build>=3.16"
+conda install --yes --quiet "conda!=4.6.1,<4.7.11a0" conda-forge-ci-setup=2.* conda-forge-pinning networkx=2.3 "conda-build>=3.16"
+export FEEDSTOCK_ROOT="${FEEDSTOCK_ROOT:-/home/conda/conda-recipes}"
+export CI_SUPPORT="${FEEDSTOCK_ROOT}/.ci_support"
+setup_conda_rc "${FEEDSTOCK_ROOT}" "${FEEDSTOCK_ROOT}/recipes" "${CI_SUPPORT}/${CONFIG}.yaml"
 source run_conda_forge_build_setup
 
 # yum installs anything from a "yum_requirements.txt" file that isn't a blank line or comment.
