@@ -50,3 +50,5 @@ jobs:
   - script: |
       # We just want to build all of the recipes.
       python .ci_support/build_all.py ./recipes
+    env:
+      BINSTAR_TOKEN: $(BINSTAR_TOKEN)

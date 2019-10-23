@@ -77,4 +77,5 @@ jobs:
       displayName: Build recipe (maybe vs2008)
       env: {
         VS90COMNTOOLS: "C:\\Program Files (x86)\\Common Files\\Microsoft\\Visual C++ for Python\\9.0\\VC\\bin",
+        BINSTAR_TOKEN: $(BINSTAR_TOKEN)
       }
