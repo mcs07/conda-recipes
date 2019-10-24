@@ -14,7 +14,7 @@ source:
     - SConstruct.patch
 
 build:
-  number: 4
+  number: 5
   run_exports:
     - {{ pin_subpackage('inchi', max_pin='x.x') }}
 
