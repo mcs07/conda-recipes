@@ -20,8 +20,6 @@ source:
 build:
   number: 0
   skip: true  # [win and vc<14]
-  run_exports:
-    - {{ pin_subpackage('openbabel', max_pin='x.x') }}
 
 requirements:
   build:
