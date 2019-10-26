@@ -12,9 +12,6 @@ source:
   sha256: {{ sha256 }}
 
   patches:
-    - fix_library_path_search.diff
-    - fix_data_path.diff
-    - fix_babel_test_paths.diff
     - iterator.patch  # [win]
 
 build:
