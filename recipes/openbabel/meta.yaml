@@ -1,16 +1,13 @@
 {% set name = "openbabel" %}
 {% set version = "3.0.0" %}
-{% set sha256 = "5c630c4145abae9bb4ab6c56a940985acb6dadf3a8c3a8073d750512c0220f30" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  fn: {{ name }}-{{ version }}.tar.gz
   url: https://github.com/openbabel/openbabel/archive/openbabel-{{ version|replace('.','-') }}.tar.gz
-  sha256: {{ sha256 }}
-
+  sha256: 5c630c4145abae9bb4ab6c56a940985acb6dadf3a8c3a8073d750512c0220f30
   patches:
     - iterator.patch  # [win]
 
