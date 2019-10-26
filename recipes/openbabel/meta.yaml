@@ -31,8 +31,6 @@ requirements:
     - make  # [unix]
     - swig
   host:
-    - boost
-    - bzip2
     - cairo
     - eigen
     - inchi
