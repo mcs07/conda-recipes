@@ -9,6 +9,7 @@ source:
   url: https://github.com/openbabel/openbabel/archive/openbabel-{{ version|replace('.','-') }}.tar.gz
   sha256: 5c630c4145abae9bb4ab6c56a940985acb6dadf3a8c3a8073d750512c0220f30
   patches:
+    - fix_data_path.diff  # [linux]
     - fix_library_path_search.diff  # [linux]
     - iterator.patch  # [win]
 
